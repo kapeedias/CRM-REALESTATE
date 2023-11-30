@@ -1,13 +1,38 @@
+<?php
+
+require_once 'core/init.php';
+
+if (Input::exists()) {
+  if (Token::check(Input::get('token'))) {
+    $validate = new Validate();
+    $validation = $validate->check(
+      array(
+        'username' => array('required' => true),
+        'password' => array('required' => true),
+      )
+    );
+
+    if ($validation->passed()) {
+      $user = new User();
+      $remember = (Input::get('remember') === 'on') ? true : false;
+      $login = $user->login(Input::get('username'), Input::get('password'), $remember);
+
+      if ($login) {
+        echo 'Success';
+      } else {
+        echo 'Login failed';
+      }
+    } else {
+      foreach ($validation->errors() as $error) {
+        echo $error . '<br>';
+      }
+    }
+  }
+}
+
+?>
+
 <!DOCTYPE html>
-<!--
-Template Name: RealEngine - A CRM built for Realtors
-Author: NobleUI
-Website: https://www.nobleui.com
-Portfolio: https://themeforest.net/user/nobleui/portfolio
-Contact: nobleui123@gmail.com
-Purchase: https://1.envato.market/nobleui_admin
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
 <html lang="en">
 
 <head>
@@ -65,26 +90,21 @@ License: For each use you must have a valid license purchased only from above li
                     <form class="forms-sample">
                       <div class="mb-3">
                         <label for="userEmail" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="userEmail" placeholder="Email">
+                        <input type="text" name="username" id="username" value="<?php echo Input::get('username'); ?>" class="form-control" autocomplete="off" placeholder="Email" />
                       </div>
                       <div class="mb-3">
                         <label for="userPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="userPassword" autocomplete="current-password" placeholder="Password">
+                        <input type="password" name="password" id="password" class="form-control" autocomplete="off" />
                       </div>
                       <div class="form-check mb-3">
-                        <input type="checkbox" class="form-check-input" id="authCheck">
                         <label class="form-check-label" for="authCheck">
-                          Remember me
+                          <input type="checkbox" name="remember" id="remember" class="form-control" />Remember me
                         </label>
+                        <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
+                        <input type="submit" name="doLogin" id="doLogin" value="Login" class="btn btn-success" />
+                        
                       </div>
-                      <div>
-                        <a href="myaccount.html" class="btn btn-primary me-2 mb-2 mb-md-0 text-white">Login</a>
-                        <button type="button" class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
-                          <i class="btn-icon-prepend" data-feather="twitter"></i>
-                          Login with twitter
-                        </button>
-                      </div>
-                      <a href="register.html" class="d-block mt-3 text-muted">Not a user? Sign up</a>
+                      
                     </form>
                   </div>
                 </div>
