@@ -97,8 +97,8 @@ if (Input::exists()) {
                                                 <input type="password" name="password" id="password" class="form-control" autocomplete="off" />
                                             </div>
                                             <div class="form-check mb-3">
-                                                <input type="checkbox" class="form-check-input" id="authCheck">
-                                                <label class="form-check-label" for="authCheck">
+                                                <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                                                <label class="form-check-label" for="remember">
                                                     Remember me
                                                 </label>
                                             </div>
