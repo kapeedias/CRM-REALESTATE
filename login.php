@@ -106,8 +106,9 @@ if (Input::exists()) {
                                     </div>
                                 </div>
                             </div>
-                            <p>text</p>
+                           
                         </div>
+                        <p>text</p>
                     </div>
                 </div>
 
