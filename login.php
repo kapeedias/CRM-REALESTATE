@@ -75,7 +75,7 @@ if (Input::exists()) {
             <div class="page-content d-flex align-items-center justify-content-center">
 
                 <div class="row w-100 mx-0 auth-page">
-                    <div class="col-md-6 col-xl-6 mx-auto">
+                    <div class="col-md-4 col-xl-4 mx-auto">
                         <div class="card">
                             <div class="row">
                                 
