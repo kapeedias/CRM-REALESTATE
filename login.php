@@ -87,7 +87,7 @@ if (Input::exists()) {
                   <div class="auth-form-wrapper px-4 py-5">
                     <a href="#" class="noble-ui-logo d-block mb-2">REAL<span>Engine</span></a>
                     <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
-                    <form class="forms-sample">
+                    <form action="" method="POST" class="form">
                       <div class="mb-3">
                         <label for="userEmail" class="form-label">Email address</label>
                         <input type="text" name="username" id="username" value="<?php echo Input::get('username'); ?>" class="form-control" autocomplete="off" placeholder="Email" />
@@ -102,7 +102,7 @@ if (Input::exists()) {
                         </label>
                         <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
                         <input type="submit" name="doLogin" id="doLogin" value="Login" class="btn btn-success" />
-                        
+
                       </div>
                       
                     </form>
