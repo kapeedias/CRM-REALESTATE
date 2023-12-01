@@ -86,11 +86,11 @@ if (Input::exists()) {
                                         <form action="" method="POST" class="form">
                                             <div class="mb-3">
                                                 <label for="userEmail" class="form-label">Email address</label>
-                                                <input type="text" name="username" id="username" value="<?php echo Input::get('username'); ?>" class="form-control" autocomplete="off" placeholder="Email" />
+                                                <input type="text" name="username" id="username" value="<?php echo Input::get('username'); ?>" class="form-control" autocomplete="off" placeholder="Email" required="yes" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="userPassword" class="form-label">Password</label>
-                                                <input type="password" name="password" id="password" class="form-control" autocomplete="off" />
+                                                <input type="password" name="password" id="password" class="form-control" autocomplete="off" required="yes" />
                                             </div>
                                             <div class="form-check mb-3">
                                                 <input type="checkbox" class="form-check-input" id="remember" name="remember">
@@ -111,7 +111,6 @@ if (Input::exists()) {
                         <p class="footer-text"> &copy; Copyright Live Web Design. All Rights Reserved. Usage under licence.</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
