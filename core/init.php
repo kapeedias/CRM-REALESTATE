@@ -6,10 +6,10 @@
     
     $GLOBALS['config'] = array(
         'mysql' => array(
-            'host' => '#',
-            'username' => '#',
-            'password' => '#',
-            'db' => '#'
+            'host' => 'localhost',
+            'username' => 'crm_admin',
+            'password' => 'cQ&cH_k)Xybr',
+            'db' => 'cms_lived'
         ),
         'remember' => array(
             'cookie_name' => 'livewd_hash',
