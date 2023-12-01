@@ -129,8 +129,12 @@ if (Input::exists()) {
                                         <h5 class="text-muted fw-normal mb-4 text-center">Create a free account.</h5>
                                         <form class="forms-sample" action="" method="POST">
                                             <div class="mb-3">
-                                                <label for="fullname" class="form-label">Full Name</label>
-                                                <input type="text" name="fullname" id="fullname" value="<?php echo Input::get('fullname'); ?>" class="form-control" autocomplete="off" />
+                                                <label for="first_name" class="form-label">Frist Name</label>
+                                                <input type="text" name="first_name" id="first_name" value="<?php echo Input::get('first_name'); ?>" class="form-control" autocomplete="off" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="last_name" class="form-label">Last Name</label>
+                                                <input type="text" name="last_name" id="last_name" value="<?php echo Input::get('last_name'); ?>" class="form-control" autocomplete="off" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">Username/Email</label>
