@@ -9,7 +9,7 @@
             'host' => 'localhost',
             'username' => 'cms_admin',
             'password' => 'cQ&cH_k)Xybr',
-            'db' => 'cms_lived'
+            'db' => 'cms_livewd'
         ),
         'remember' => array(
             'cookie_name' => 'livewd_hash',
