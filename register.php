@@ -51,7 +51,7 @@ if (Input::exists()) {
 
                 $user->create([
                     'username' => Input::get('username'),
-                    'password_hash' => Hash::make(Input::get('password_hash'), $salt),
+                    'password_hash' => Hash::make(Input::get('passwordagain'), $salt),
                     'salt' => $salt,
                     'first_name' => Input::get('first_name'),
                     'last_name' => Input::get('last_name'),
