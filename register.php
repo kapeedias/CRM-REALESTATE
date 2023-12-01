@@ -125,8 +125,8 @@ if (Input::exists()) {
 
                                 <div class="col-12 p-3">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="noble-ui-logo d-block mb-2">Real<span> Engine</span></a>
-                                        <h5 class="text-muted fw-normal mb-4">Create a free account.</h5>
+                                        <a href="#" class="noble-ui-logo d-block mb-2 text-center">Real<span> Engine</span></a>
+                                        <h5 class="text-muted fw-normal mb-4 text-center">Create a free account.</h5>
                                         <form class="forms-sample" action="" method="POST">
                                             <div class="mb-3">
                                                 <label for="fullname" class="form-label">Full Name</label>
