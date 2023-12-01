@@ -27,7 +27,7 @@ if (Input::exists()) {
                 'required' => true,
                 'matches'  => 'password'
             ),
-            'fist_name' => array(
+            'first_name' => array(
                 'first_name'     => 'First Name',
                 'required' => true,
                 'min'      => 2,
