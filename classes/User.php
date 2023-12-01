@@ -40,7 +40,7 @@ class User{
             $data = $this->_db->get('users',array($field, '=', $user));
 
             if($data->count()){
-                $this->_datga = $data->first();
+                $this->_data = $data->first();
                 return true;
             }
         }
