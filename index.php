@@ -78,7 +78,7 @@ if (Input::exists()) {
                     <div class="col-md-4 col-xl-4 mx-auto">
                         <div class="card">
                             <div class="row">
-                                
+
                                 <div class="col-12 p-4">
                                     <div class="auth-form-wrapper px-4 py-5">
                                         <a href="#" class="noble-ui-logo d-block mb-2">REAL<span>Engine</span></a>
@@ -106,7 +106,6 @@ if (Input::exists()) {
                                     </div>
                                 </div>
                             </div>
-                           
                         </div>
                         <p class="footer-text"> &copy; Copyright Live Web Design. All Rights Reserved. Usage under licence.</p>
                     </div>

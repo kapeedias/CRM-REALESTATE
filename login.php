@@ -106,7 +106,6 @@ if (Input::exists()) {
                                     </div>
                                 </div>
                             </div>
-                           
                         </div>
                         <p class="footer-text"> &copy; Copyright Live Web Design. All Rights Reserved. Usage under licence.</p>
                     </div>
