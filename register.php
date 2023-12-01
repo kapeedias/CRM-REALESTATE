@@ -127,6 +127,31 @@ if (Input::exists()) {
                                     <div class="auth-form-wrapper px-4 py-5">
                                         <a href="#" class="noble-ui-logo d-block mb-2">Noble<span>UI</span></a>
                                         <h5 class="text-muted fw-normal mb-4">Create a free account.</h5>
+                                        <form action="" method="POST" class="form">
+                                            <div class="form-group mt-2">
+                                                <label for="username">Username</label>
+                                                <input type="text" name="username" id="username" value="<?php echo Input::get('username'); ?>" class="form-control" autocomplete="off" />
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <label for="password">Password</label>
+                                                <input type="password" name="password" id="password" value="" class="form-control" autocomplete="off" />
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <label for="passwordagain">Re-Enter Password</label>
+                                                <input type="password" name="passwordagain" id="passwordagain" value="" class="form-control" autocomplete="off" />
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <label for="fullname">Full Name</label>
+                                                <input type="text" name="fullname" id="fullname" value="<?php echo Input::get('fullname'); ?>" class="form-control" autocomplete="off" />
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
+                                                <input type="submit" name="doRegister" id="doRegister" value="Register" class="btn btn-success" />
+                                            </div>
+
+
+                                        </form>
+
                                         <form class="forms-sample">
                                             <div class="mb-3">
                                                 <label for="exampleInputUsername1" class="form-label">Username</label>
