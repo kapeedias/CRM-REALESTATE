@@ -7,7 +7,7 @@
     $GLOBALS['config'] = array(
         'mysql' => array(
             'host' => 'localhost',
-            'username' => 'crm_admin',
+            'username' => 'cms_admin',
             'password' => 'cQ&cH_k)Xybr',
             'db' => 'cms_lived'
         ),
