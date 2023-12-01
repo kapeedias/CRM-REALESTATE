@@ -15,7 +15,7 @@ if (Input::exists()) {
                 'required' => true,
                 'min'      => 2,
                 'max'      => 20,
-                'unique'   => 'users'
+                'unique'   => 'crm_users'
             ),
             'password_hash' => array(
                 'name'     => 'Password',
