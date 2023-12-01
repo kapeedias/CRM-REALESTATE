@@ -127,49 +127,22 @@ if (Input::exists()) {
                                     <div class="auth-form-wrapper px-4 py-5">
                                         <a href="#" class="noble-ui-logo d-block mb-2">Noble<span>UI</span></a>
                                         <h5 class="text-muted fw-normal mb-4">Create a free account.</h5>
-                                        <form action="" method="POST" class="form">
-                                            <div class="form-group mt-2">
-                                                <label for="username">Username</label>
-                                                <input type="text" name="username" id="username" value="<?php echo Input::get('username'); ?>" class="form-control" autocomplete="off" />
-                                            </div>
-                                            <div class="form-group mt-2">
-                                                <label for="password">Password</label>
-                                                <input type="password" name="password" id="password" value="" class="form-control" autocomplete="off" />
-                                            </div>
-                                            <div class="form-group mt-2">
-                                                <label for="passwordagain">Re-Enter Password</label>
-                                                <input type="password" name="passwordagain" id="passwordagain" value="" class="form-control" autocomplete="off" />
-                                            </div>
-                                            <div class="form-group mt-2">
-                                                <label for="fullname">Full Name</label>
+                                        <form class="forms-sample" action="" method="POST">
+                                            <div class="mb-3">
+                                                <label for="fullname" class="form-label">Full Name</label>
                                                 <input type="text" name="fullname" id="fullname" value="<?php echo Input::get('fullname'); ?>" class="form-control" autocomplete="off" />
                                             </div>
-                                            <div class="form-group mt-2">
-                                                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
-                                                <input type="submit" name="doRegister" id="doRegister" value="Register" class="btn btn-success" />
-                                            </div>
-
-
-                                        </form>
-
-                                        <form class="forms-sample">
                                             <div class="mb-3">
-                                                <label for="exampleInputUsername1" class="form-label">Username</label>
-                                                <input type="text" class="form-control" id="exampleInputUsername1" autocomplete="Username" placeholder="Username">
+                                                <label for="username" class="form-label">Username/Email</label>
+                                                <input type="text" name="username" id="username" value="<?php echo Input::get('username'); ?>" class="form-control" autocomplete="off" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="userEmail" class="form-label">Email address</label>
-                                                <input type="email" class="form-control" id="userEmail" placeholder="Email">
+                                                <label for="password" class="form-label">Password</label>
+                                                <input type="password" name="password" id="password" value="" class="form-control" autocomplete="off" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="userPassword" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="userPassword" autocomplete="current-password" placeholder="Password">
-                                            </div>
-                                            <div class="form-check mb-3">
-                                                <input type="checkbox" class="form-check-input" id="authCheck">
-                                                <label class="form-check-label" for="authCheck">
-                                                    Remember me
-                                                </label>
+                                                <label for="passwordagain" class="form-label">Re-Enter Password</label>
+                                                <input type="password" name="passwordagain" id="passwordagain" value="" class="form-control" autocomplete="off" />
                                             </div>
                                             <div>
                                                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
