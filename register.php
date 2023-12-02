@@ -1,11 +1,11 @@
 <?php
 require_once 'core/init.php';
 
-/*
+
 if (Input::exists()) {
 
     //CSRF Protection
-    if (Token::check(Input::get('token'))) {
+    //if (Token::check(Input::get('token'))) {
 
         //echo Input::get('username');
         $validate = new Validate();
@@ -66,10 +66,10 @@ if (Input::exists()) {
                 echo $error, '<br>';
             }
         }
-    }
+   // }
 }
 
-*/
+
 ?>
 
 <!DOCTYPE html>
