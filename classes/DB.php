@@ -80,10 +80,6 @@ class DB
 
     public function insert($table, $fields = array())
     {
-        if (!is_array($fields)) {
-            throw new Exception("Invalid data provided. Expected an array.");
-        }
-
         $keys = array_keys($fields);
         $values = '';
         $x = 1;
