@@ -91,11 +91,11 @@ if (Input::exists()) {
                                         <a href="#" class="noble-ui-logo d-block mb-2 text-center">REAL<span> Engine</span></a>
                                         <form action="" method="POST" class="form">
                                             <div class="mb-3">
-                                                <label for="userEmail" class="form-label">Email address</label>
+                                                <label for="username" class="form-label">Email address</label>
                                                 <input type="text" name="username" id="username" value="<?php echo Input::get('username'); ?>" class="form-control" autocomplete="off" placeholder="Email" required="yes" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="userPassword" class="form-label">Password</label>
+                                                <label for="password" class="form-label">Password</label>
                                                 <input type="password" name="password" id="password" class="form-control" autocomplete="off" required="yes" />
                                             </div>
                                             <div class="form-check mb-3">
