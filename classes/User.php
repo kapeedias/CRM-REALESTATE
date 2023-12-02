@@ -2,7 +2,7 @@
 
 class User
 {
-    private $_db, $_data, $_sessionName, $_cookieName, $_isLoggedIn;
+    private $_db, $_data, $_sessionName, $_cookieName, $_isLoggedIn, $password;
 
 
     public function __construct($user = null)
@@ -52,8 +52,8 @@ class User
         $user = $this->find($username);
 
         if ($user) {
-            //if($this->data()->password === Hash::make($password, $this->data()->salt)){
-            if (isset($this->data()->password) && Hash::make($password, $this->data()->salt) === $this->data()->password) {
+            if($this->data()->password === Hash::make($password, $this->data()->salt)){
+            
                 Session::put($this->_sessionName, $this->data()->id);
 
                 if ($remember) {
@@ -74,9 +74,7 @@ class User
 
 
                 return true;
-            } else {
-                echo "Password doesn't exists error";
-            }
+            } 
         }
         return false;
     }
