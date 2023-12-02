@@ -55,7 +55,7 @@ if (Input::exists()) {
                     'first_name' => Input::get('first_name'),
                     'last_name' => Input::get('last_name'),
                     'access_level' => '1',
-                    'email' => Input::get('email'),
+                    'email' => Input::get('username'),
                 ));
 
                 Session::flash('success', 'You are registered successfully!');
