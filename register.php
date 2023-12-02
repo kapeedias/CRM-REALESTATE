@@ -17,24 +17,25 @@ if (Input::exists()) {
                 'max'      => 20,
                 'unique'   => 'crm_users'
             ),
-            'password' => array(
-                'name'     => 'Password',
-                'required' => true,
-                'min'      => 8
-            ),
             'passwordagain' => array(
                 'name'     => 'Re-Enter Password',
                 'required' => true,
                 'matches'  => 'password'
             ),
+            'password' => array(
+                'name'     => 'Password',
+                'required' => true,
+                'min'      => 8
+            ),
+
             'first_name' => array(
-                'first_name'     => 'First Name',
+                'name'     => 'First Name',
                 'required' => true,
                 'min'      => 2,
                 'max'      => 50
             ),
             'last_name' => array(
-                'last_name'     => 'Last Name',
+                'name'     => 'Last Name',
                 'required' => true,
                 'min'      => 2,
                 'max'      => 50
