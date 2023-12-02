@@ -45,7 +45,7 @@ if (Input::exists()) {
 
             try {
 
-                $user->create([
+                $user->create(array(
                     'username' => Input::get('username'),
                     'password' => Hash::make(Input::get('password'), $salt),
                     'salt' => $salt,
@@ -55,7 +55,7 @@ if (Input::exists()) {
                     'group' => '1',
                     'email' => Input::get('email'),
                     'tel' => Input::get('tel')
-                ]);
+                ));
 
                 Session::flash('success', 'You are registered successfully!');
                 Redirect::to('index.php');
