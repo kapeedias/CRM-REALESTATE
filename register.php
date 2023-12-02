@@ -146,7 +146,7 @@ if (Input::exists()) {
                                                 <input type="password" name="password" id="password" value="" class="form-control" autocomplete="off" required />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="passwordagain" class="form-label">Re-Enter Password</label>
+                                                <label for="password_again" class="form-label">Re-Enter Password</label>
                                                 <input type="password" name="password_again" id="password_again" value="" class="form-control" autocomplete="off" required />
                                             </div>
                                             <div>
