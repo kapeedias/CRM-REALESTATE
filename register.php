@@ -17,7 +17,7 @@ if (Input::exists()) {
                 'max'      => 20,
                 'unique'   => 'crm_users'
             ),
-            'password_hash' => array(
+            'password' => array(
                 'name'     => 'Password',
                 'required' => true,
                 'min'      => 8
@@ -51,7 +51,7 @@ if (Input::exists()) {
 
                 $user->create([
                     'username' => Input::get('username'),
-                    'password_hash' => Hash::make(Input::get('password'), $salt),
+                    'password' => Hash::make(Input::get('password'), $salt),
                     'salt' => $salt,
                     'first_name' => Input::get('first_name'),
                     'last_name' => Input::get('last_name'),
