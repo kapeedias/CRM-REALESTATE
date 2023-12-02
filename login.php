@@ -78,7 +78,7 @@ if (Input::exists()) {
                     <div class="col-md-4 col-xl-4 mx-auto">
                         <?php
                         if (Session::exists('home')) {
-                            echo '<div class=\"alert alert-success\" role=\"alert\">' . Session::flash('home') . '</div>';
+                            echo '<div class="alert alert-success text-center" role="alert">' . Session::flash('home') . '</div>';
                         }
                         ?>
                         <div class="card">
