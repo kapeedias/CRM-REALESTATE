@@ -1,8 +1,6 @@
 <?php
 require_once 'core/init.php';
-if(Input::exists()){
-    echo'Submitted';
-}
+
 /*
 if (Input::exists()) {
 
@@ -19,7 +17,6 @@ if (Input::exists()) {
                 'unique'   => 'crm_users'
             ),
             'password' => array(
-                'name'     => 'Password',
                 'required' => true,
                 'min'      => 8
             ),
