@@ -78,7 +78,7 @@ class DB
         return $this->action('DELETE FROM', $table, $where);
     } // end of function delete
 
-    public function insert($table, $fields)
+    public function insert($table, $fields = array())
     {
         if (!is_array($fields)) {
             throw new Exception("Invalid data provided. Expected an array.");
