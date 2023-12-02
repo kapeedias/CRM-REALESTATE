@@ -80,7 +80,7 @@ class DB
 
     public function insert($table, $fields = array())
     {
-        $keys = array_keys($fields);
+        $keys = array_keys($fields());
         $values = '';
         $x = 1;
         /*  foreach ($fields as $field) {
