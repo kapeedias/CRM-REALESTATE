@@ -54,10 +54,8 @@ if (Input::exists()) {
                     'salt' => $salt,
                     'first_name' => Input::get('first_name'),
                     'last_name' => Input::get('last_name'),
-                    'joined' => date('Y-m-d H:i:s'),
                     'group' => '1',
                     'email' => Input::get('email'),
-                    'tel' => Input::get('tel')
                 ));
 
                 Session::flash('success', 'You are registered successfully!');
