@@ -59,13 +59,13 @@ if (Input::exists()) {
                 ));
 
                 Session::flash('success', 'You are registered successfully!');
-                Redirect::to('index.php');
+                //Redirect::to('index.php');
             } catch (Exception $e) {
-                die($e->getMessage());
+                Session::flash('Error', $e->getMessage().'<br />');
             }
         } else {
             foreach ($validation->errors() as $error) {
-                echo $error, '<br>';
+                Session::flash('Error', $error.'<br />');
             }
         }
     }
