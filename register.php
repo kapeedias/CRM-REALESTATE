@@ -134,19 +134,19 @@ if (Input::exists()) {
                                             </div>
                                             <div class="mb-3">
                                                 <label for="last_name" class="form-label">Last Name</label>
-                                                <input type="text" name="last_name" id="last_name" value="<?php echo Input::get('last_name'); ?>" class="form-control" autocomplete="off" required/>
+                                                <input type="text" name="last_name" id="last_name" value="<?php echo Input::get('last_name'); ?>" class="form-control" autocomplete="off" required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">Username/Email</label>
-                                                <input type="text" name="username" id="username" value="<?php echo Input::get('username'); ?>" class="form-control" autocomplete="off" required/>
+                                                <input type="text" name="username" id="username" value="<?php echo Input::get('username'); ?>" class="form-control" autocomplete="off" required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="password" class="form-label">Password</label>
-                                                <input type="password" name="password_hash" id="password_hash" value="" class="form-control" autocomplete="off" required/>
+                                                <input type="password" name="password_hash" id="password_hash" value="" class="form-control" autocomplete="off" required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="passwordagain" class="form-label">Re-Enter Password</label>
-                                                <input type="password" name="passwordagain" id="passwordagain" value="" class="form-control" autocomplete="off" required/>
+                                                <input type="password" name="passwordagain" id="passwordagain" value="" class="form-control" autocomplete="off" required />
                                             </div>
                                             <div>
                                                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
