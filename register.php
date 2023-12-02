@@ -4,6 +4,9 @@ require_once 'core/init.php';
 
 if (Input::exists()) {
 
+    echo ''.Input::get('password').'<br/>';
+    echo ''.Input::get('password_again').'<br/>';
+
     //CSRF Protection
     //if (Token::check(Input::get('token'))) {
 
