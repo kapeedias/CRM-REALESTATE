@@ -1,16 +1,16 @@
 <?php
 
 class User{
-    private $_db, 
-            $_data,
-            $_sessionName,
-            $_cookieName,
-            $_isLoggedIn;
+    private $_db
+            ,$_data
+            ,$_sessionName
+            ,$_cookieName
+            ,$_isLoggedIn;
 
 
     public function __construct($user = null){
         $this->_db = DB::getInstance();
-        $this->_sessionName = Config::get('session/session_name');
+       $this->_sessionName = Config::get('session/session_name');
         $this->_cookieName = Config::get('remember/cookie_name');
         
         if(!$user){
@@ -24,11 +24,11 @@ class User{
             }
         }else{
             $this->find($user);
-        }
+        } 
     }
 
     public function create($fields = array()){
-        if($this->_db->insert('crm_users','$fields')){
+        if($this->_db->insert('crm_users',$fields)){
             throw new Exception('There was a problem creating your account');
         }
     }
