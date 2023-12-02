@@ -83,9 +83,17 @@ class DB
         $keys = array_keys($fields);
         $values = '';
         $x = 1;
-        foreach ($fields as $field) {
+        /*  foreach ($fields as $field) {
             $values .= '?';
             if ($x < count($fields)) {
+                $values .= ', ';
+            }
+            $x++;
+        }
+        */
+        foreach ($keys as $key) {
+            $values .= '?';
+            if ($x < count($keys)) {
                 $values .= ', ';
             }
             $x++;
