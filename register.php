@@ -25,7 +25,7 @@ if (Input::exists()) {
             'passwordagain' => array(
                 'name'     => 'Re-Enter Password',
                 'required' => true,
-                'matches'  => 'password'
+                'matches'  => 'password_hash'
             ),
             'first_name' => array(
                 'first_name'     => 'First Name',
