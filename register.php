@@ -17,7 +17,7 @@ if (Input::exists()) {
                 'max'      => 20,
                 'unique'   => 'crm_users'
             ),
-            'password' => array(
+            'password_hash' => array(
                 'name'     => 'Password',
                 'required' => true,
                 'min'      => 8
@@ -51,7 +51,7 @@ if (Input::exists()) {
 
                 $user->create([
                     'username' => Input::get('username'),
-                    'password_hash' => Hash::make(Input::get('password'), $salt),
+                    'password_hash' => Hash::make(Input::get('password_hash'), $salt),
                     'salt' => $salt,
                     'first_name' => Input::get('first_name'),
                     'last_name' => Input::get('last_name'),
@@ -142,7 +142,7 @@ if (Input::exists()) {
                                             </div>
                                             <div class="mb-3">
                                                 <label for="password" class="form-label">Password</label>
-                                                <input type="password" name="password" id="password" value="" class="form-control" autocomplete="off" required/>
+                                                <input type="password" name="password_hash" id="password_hash" value="" class="form-control" autocomplete="off" required/>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="passwordagain" class="form-label">Re-Enter Password</label>
