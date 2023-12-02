@@ -40,7 +40,9 @@ if (Input::exists()) {
         if ($validation->passed()) {
             echo "Passed";
        }else{
-        echo "Failed Validation";
+        foreach ($validation->errors() as $error) {
+            echo $error, '<br>';
+        }
        }
          /*   $user = new User();
             $salt = Hash::salt(32);
