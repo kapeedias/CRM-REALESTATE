@@ -4,11 +4,11 @@ require_once 'core/init.php';
 
 if (Input::exists()) {
 
-    echo ''.Input::get('password').'<br/>';
-    echo ''.Input::get('password_again').'<br/>';
+    //echo Input::get('password').'<br/>';
+    //echo Input::get('password_again');
 
     //CSRF Protection
-    //if (Token::check(Input::get('token'))) {
+    if (Token::check(Input::get('token'))) {
 
         //echo Input::get('username');
         $validate = new Validate();
@@ -41,13 +41,8 @@ if (Input::exists()) {
 
 
         if ($validation->passed()) {
-            echo "Passed";
-       }else{
-        foreach ($validation->errors() as $error) {
-            echo $error, '<br>';
-        }
-       }
-         /*   $user = new User();
+
+            $user = new User();
             $salt = Hash::salt(32);
 
             try {
@@ -73,8 +68,8 @@ if (Input::exists()) {
             foreach ($validation->errors() as $error) {
                 echo $error, '<br>';
             }
-        } */
-   // }
+        }
+    }
 }
 
 
