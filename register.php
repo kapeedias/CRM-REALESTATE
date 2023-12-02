@@ -54,7 +54,7 @@ if (Input::exists()) {
                     'salt' => $salt,
                     'first_name' => Input::get('first_name'),
                     'last_name' => Input::get('last_name'),
-                    'group' => '1',
+                    'access_level' => '1',
                     'email' => Input::get('email'),
                 ));
 
