@@ -58,7 +58,7 @@ if (Input::exists()) {
                     'email' => Input::get('username'),
                 ));
 
-                Session::flash('home', 'You are registered successfully!');
+                Session::flash('home', 'You are registered successfully. You can login now!');
                 Redirect::to('login.php');
             } catch (Exception $e) {
                 Session::flash('Error', $e->getMessage().'<br />');

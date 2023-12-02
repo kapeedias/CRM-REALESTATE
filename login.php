@@ -18,13 +18,14 @@ if (Input::exists()) {
             $login = $user->login(Input::get('username'), Input::get('password'), $remember);
 
             if ($login) {
-                echo 'Success';
+                Redirect::to('myaccount.php');
+
             } else {
-                echo 'Login failed';
+                Session::flash('error', 'Login Failed. Please try again later');
             }
         } else {
             foreach ($validation->errors() as $error) {
-                echo $error . '<br>';
+                Session::flash('error', $error.'<br>');
             }
         }
     }
