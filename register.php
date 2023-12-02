@@ -37,7 +37,7 @@ if (Input::exists()) {
         ));
 
 
-        if ($validation->passed()) {
+       /* if ($validation->passed()) {
 
             $user = new User();
             $salt = Hash::salt(32);
@@ -65,7 +65,7 @@ if (Input::exists()) {
             foreach ($validation->errors() as $error) {
                 echo $error, '<br>';
             }
-        }
+        } */
    // }
 }
 
