@@ -22,6 +22,7 @@ if (Input::exists()) {
 
             } else {
                 Session::flash('error', 'Login Failed. Please try again later');
+                echo "Login Failed";
             }
         } else {
             foreach ($validation->errors() as $error) {
