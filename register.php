@@ -39,6 +39,8 @@ if (Input::exists()) {
 
         if ($validation->passed()) {
             echo "Passed";
+       }else{
+        echo "Failed Validation";
        }
          /*   $user = new User();
             $salt = Hash::salt(32);
