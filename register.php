@@ -59,7 +59,7 @@ if (Input::exists()) {
                 ));
 
                 Session::flash('success', 'You are registered successfully!');
-                //Redirect::to('index.php');
+                Redirect::to('login.php');
             } catch (Exception $e) {
                 Session::flash('Error', $e->getMessage().'<br />');
             }
@@ -119,9 +119,7 @@ if (Input::exists()) {
 
                 <div class="row w-100 mx-0 auth-page">
                     <div class="col-md-8 col-xl-6 mx-auto">
-                    <div class="alert alert-success" role="alert">
-								A simple success alert—check it out!
-							</div>
+                           
                         <div class="card">
                             <div class="row">
 
