@@ -80,6 +80,9 @@ class DB
 
     public function insert($table, $fields = array())
     {
+        if (!is_array($fields)) {
+            $fields = array('value' => $fields);
+        }
 
         $keys = array_keys($fields);
         $values = '';
