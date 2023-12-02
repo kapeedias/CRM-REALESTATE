@@ -17,10 +17,10 @@ if (Input::exists()) {
                 'max'      => 20,
                 'unique'   => 'crm_users'
             ),
-            'passwordagain' => array(
+            'password_again' => array(
                 'name'     => 'Re-Enter Password',
-                'required' => false
-                //'matches'  => 'password'
+                'required' => true,
+                'matches'  => 'password'
             ),
             'password' => array(
                 'name'     => 'Password',
