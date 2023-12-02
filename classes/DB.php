@@ -78,7 +78,7 @@ class DB
         return $this->action('DELETE FROM', $table, $where);
     } // end of function delete
 
-    public function insert($table, $fields = array())
+    public function insert($table, $fields)
     {
         $keys = array_keys($fields);
         $values = '';
