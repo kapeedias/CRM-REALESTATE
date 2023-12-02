@@ -2,8 +2,8 @@
 
 class User
 {
-    private $_db, $_data, $_sessionName, $_cookieName, $_isLoggedIn, $password;
-
+    private $_db, $_data, $_sessionName, $_cookieName, $_isLoggedIn;
+    
 
     public function __construct($user = null)
     {
@@ -52,7 +52,7 @@ class User
         $user = $this->find($username);
 
         if ($user) {
-            if($this->data()->$password === Hash::make($password, $this->data()->salt)){
+            if($this->data()->password === Hash::make($password, $this->data()->salt)){
             
                 Session::put($this->_sessionName, $this->data()->id);
 
@@ -74,7 +74,10 @@ class User
 
 
                 return true;
-            } 
+            } else {
+                  // Provide more information about the error
+            echo "Incorrect password. Expected: " . Hash::make($password,$this->data()->salt) . ", Actual: " . $this->data()->password;
+            }
         }
         return false;
     }
