@@ -144,11 +144,11 @@ if (Input::exists()) {
                                             </div>
                                             <div class="mb-3">
                                                 <label for="password" class="form-label">Password</label>
-                                                <input type="password" name="password" id="password" class="form-control" autocomplete="off" required />
+                                                <input type="password" name="password" id="password" class="form-control" autocomplete="off" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="password_again" class="form-label">Re-Enter Password</label>
-                                                <input type="password" name="password_again" id="password_again" class="form-control" autocomplete="off" required />
+                                                <input type="password" name="password_again" id="password_again" class="form-control" autocomplete="off" />
                                             </div>
                                             <div>
                                                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
