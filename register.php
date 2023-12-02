@@ -11,31 +11,26 @@ if (Input::exists()) {
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
             'username' =>  array(
-                'name'     => 'Username',
                 'required' => true,
                 'min'      => 2,
                 'max'      => 20,
                 'unique'   => 'crm_users'
-            ),
-            'password_again' => array(
-                'name'     => 'Re-Enter Password',
-                'required' => true,
-                'matches'  => 'password'
             ),
             'password' => array(
                 'name'     => 'Password',
                 'required' => true,
                 'min'      => 8
             ),
-
+            'password_again' => array(
+                'required' => true,
+                'matches'  => 'password'
+            ),
             'first_name' => array(
-                'name'     => 'First Name',
                 'required' => true,
                 'min'      => 2,
                 'max'      => 50
             ),
             'last_name' => array(
-                'name'     => 'Last Name',
                 'required' => true,
                 'min'      => 2,
                 'max'      => 50
@@ -143,11 +138,11 @@ if (Input::exists()) {
                                             </div>
                                             <div class="mb-3">
                                                 <label for="password" class="form-label">Password</label>
-                                                <input type="password" name="password" id="password" value="" class="form-control" autocomplete="off" required />
+                                                <input type="password" name="password" id="password" class="form-control" autocomplete="off" required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="password_again" class="form-label">Re-Enter Password</label>
-                                                <input type="password" name="password_again" id="password_again" value="" class="form-control" autocomplete="off" required />
+                                                <input type="password" name="password_again" id="password_again" class="form-control" autocomplete="off" required />
                                             </div>
                                             <div>
                                                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
