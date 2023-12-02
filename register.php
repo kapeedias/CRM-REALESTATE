@@ -1,7 +1,9 @@
 <?php
 require_once 'core/init.php';
-
-
+if(Input::exists()){
+    echo'Submitted';
+}
+/*
 if (Input::exists()) {
 
     //CSRF Protection
@@ -69,6 +71,8 @@ if (Input::exists()) {
         }
     }
 }
+
+*/
 ?>
 
 <!DOCTYPE html>
