@@ -46,7 +46,9 @@ if (Input::exists()) {
             $user = new User();
             $salt = Hash::salt(32);
 
-            try {
+            echo Hash::make(Input::get('password'), $salt).'<br/>';
+            echo $salt;
+          /*  try {
 
                 $user->create(array(
                     'username' => Input::get('username'),
@@ -62,7 +64,7 @@ if (Input::exists()) {
                 Redirect::to('login.php');
             } catch (Exception $e) {
                 Session::flash('Error', $e->getMessage().'<br />');
-            }
+            } */
         } else {
             foreach ($validation->errors() as $error) {
                 Session::flash('Error', $error.'<br />');
