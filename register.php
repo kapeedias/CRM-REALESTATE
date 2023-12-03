@@ -9,7 +9,7 @@ if (Input::exists()) {
             'username' =>  array(
                 'required' => true,
                 'min'      => 2,
-                'max'      => 20,
+                'max'      => 100,
                 'unique'   => 'crm_users'
             ),
             'password' => array(
