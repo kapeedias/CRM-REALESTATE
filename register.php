@@ -1,21 +1,9 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require_once 'core/init.php';
 
-
-
-
 if (Input::exists()) {
-
-    //echo Input::get('password').'<br/>';
-    //echo Input::get('password_again');
-
-    //CSRF Protection
     if (Token::check(Input::get('token'))) {
 
-        //echo Input::get('username');
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
             'username' =>  array(
@@ -51,7 +39,6 @@ if (Input::exists()) {
             $salt = Hash::salt(32);
 
             try {
-
                 $user->create(array(
                     'username' => Input::get('username'),
                     'password_hash' => Hash::make(Input::get('password'), $salt),
