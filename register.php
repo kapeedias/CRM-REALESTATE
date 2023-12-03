@@ -5,13 +5,12 @@ require_once 'core/init.php';
 
 if (Input::exists()) {
 
-    //echo Input::get('password').'<br/>';
-    //echo Input::get('password_again');
+   
 
     //CSRF Protection
     if (Token::check(Input::get('token'))) {
 
-        //echo Input::get('username');
+        
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
             'username' =>  array(
@@ -61,7 +60,7 @@ if (Input::exists()) {
                 ));
 
                 Session::flash('home', 'You are registered successfully. You can login now!');
-                //Redirect::to('login.php');
+                Redirect::to('login.php');
             } catch (Exception $e) {
                 Session::flash('Error', $e->getMessage().'<br />');
             }
