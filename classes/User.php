@@ -46,7 +46,7 @@ class User
         }
         return false;
     }
-
+/*
     public function login($username = null, $password = null)
     {
         $user = $this->find($username);
@@ -62,6 +62,38 @@ class User
         
         return false;
     }
+    */
+    public function login($username = null, $password = null, $remember=false){
+        $user = $this->find($username);
+
+        if($user){
+            if($this->data()->password === Hash::make($password, $this->data()->salt)){
+               Session::put($this->_sessionName, $this->data()->id);
+
+                if($remember){
+                    $hash = Hash::unique();
+                    $hashCheck = $this->_db->get('users_session', array('user_id', '=', $this->data()->id));
+                    if(!$hashCheck->count()){
+                        $this->_db->insert('users_session',array(
+                            'user_id' => $this->data()->id,
+                            'hash' => $hash,
+                            'ip' => $_SERVER['REMOTE_ADDR']
+                        ));
+                    } else {
+                        $hash = $hashCheck->first()->hash;
+                    }
+                
+                    Cookie::put($this->_cookieName, $hash, Config::get('remember/cookie_expiry'));
+
+                }
+
+
+               return true;
+            }
+        }
+        return false;
+    }
+
 
     public function logout()
     {
