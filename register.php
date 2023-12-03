@@ -38,9 +38,6 @@ if (Input::exists()) {
 
             $user = new User();
             $salt = Hash::salt(32);
-
-            echo Hash::make(Input::get('password'), $salt) . '<br/>';
-            echo $salt;
             try {
                 $user->create(array(
                     'username' => Input::get('username'),
