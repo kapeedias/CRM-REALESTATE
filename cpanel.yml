@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/xajywuinbgrj/public_html/cms
+    - /bin/cp -R * $DEPLOYPATH
+    - /bin/rm $DEPLOYPATH/core/database.sql
+    - /bin/rm $DEPLOYPATH/core/init.php
