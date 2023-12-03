@@ -582,8 +582,8 @@ if(!$user->isLoggedIn()){
                     <img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/80x80" alt="">
                   </div>
                   <div class="text-center">
-                    <p class="tx-16 fw-bolder">Amiah Burton</p>
-                    <p class="tx-12 text-muted">amiahburton@gmail.com</p>
+                    <p class="tx-16 fw-bolder"><?php echo $user->data()->first_name; ?></p>
+                    <p class="tx-12 text-muted"><?php echo $user->data()->email; ?></p>
                   </div>
                 </div>
                 <ul class="list-unstyled p-1">
