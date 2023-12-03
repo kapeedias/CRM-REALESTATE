@@ -59,13 +59,15 @@ if (Input::exists()) {
                 ));
 
                 Session::flash('home', 'You are registered successfully. You can login now!');
-                //Redirect::to('login.php');
+                Redirect::to('login.php');
             } catch (Exception $e) {
                 Session::flash('Error', $e->getMessage().'<br />');
+                echo "Fail";
             }
         } else {
             foreach ($validation->errors() as $error) {
                 Session::flash('Error', $error.'<br />');
+                echo "Fail -1";
             }
         }
     }
