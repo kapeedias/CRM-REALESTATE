@@ -47,10 +47,19 @@ class User
         return false;
     }
 
-    public function login($username = null, $password = null, $remember = false)
+    public function login($username = null, $password = null)
     {
         $user = $this->find($username);
+        
+        if ($user) {
+            if($this->data()->password === Hash::make($password, $this->data()->salt)){
+                 echo "OK";
+                }
+                return true;
+            } 
+       // }
         print_r($this->_data);
+        
         return false;
     }
 
