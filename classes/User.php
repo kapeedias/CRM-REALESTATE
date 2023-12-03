@@ -54,7 +54,7 @@ class User
         if ($user) {
             if($this->data()->password === Hash::make($password, $this->data()->salt)){
             
-                Session::put($this->_sessionName, $this->data()->id);
+                /*Session::put($this->_sessionName, $this->data()->id);
 
                 if ($remember) {
                     $hash = Hash::unique();
@@ -73,7 +73,7 @@ class User
                 }
 
 
-                return true;
+                return true;  */
             } else {
                   // Provide more information about the error
             echo "Incorrect password. Expected: " . Hash::make($password,$this->data()->salt) . ", <br />Actual: " . $this->data()->$password;
