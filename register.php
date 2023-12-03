@@ -1,10 +1,17 @@
 <?php
 require_once 'core/init.php';
 
+
+
 if (Input::exists()) {
 
+    //echo Input::get('password').'<br/>';
+    //echo Input::get('password_again');
+
+    //CSRF Protection
     if (Token::check(Input::get('token'))) {
 
+        //echo Input::get('username');
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
             'username' =>  array(
@@ -38,7 +45,11 @@ if (Input::exists()) {
 
             $user = new User();
             $salt = Hash::salt(32);
+
+            echo Hash::make(Input::get('password'), $salt).'<br/>';
+            echo $salt;
             try {
+
                 $user->create(array(
                     'username' => Input::get('username'),
                     'password_hash' => Hash::make(Input::get('password'), $salt),
@@ -50,13 +61,13 @@ if (Input::exists()) {
                 ));
 
                 Session::flash('home', 'You are registered successfully. You can login now!');
-                Redirect::to('login.php');
+                //Redirect::to('login.php');
             } catch (Exception $e) {
-                Session::flash('Error', $e->getMessage() . '<br />');
+                Session::flash('Error', $e->getMessage().'<br />');
             }
         } else {
             foreach ($validation->errors() as $error) {
-                Session::flash('Error', $error . '<br />');
+                Session::flash('Error', $error.'<br />');
             }
         }
     }
@@ -76,7 +87,7 @@ if (Input::exists()) {
     <meta name="author" content="Live Web Design">
 
 
-    <title>REALENGINE - A CRM built for REALtors</title>
+    <title>REALEngine - A CRM built for REALtors</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -110,13 +121,13 @@ if (Input::exists()) {
 
                 <div class="row w-100 mx-0 auth-page">
                     <div class="col-md-8 col-xl-6 mx-auto">
-
+                           
                         <div class="card">
                             <div class="row">
 
                                 <div class="col-12 p-3">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="noble-ui-logo d-block mb-2 text-center">REAL<span> ENGINE</span></a>
+                                        <a href="#" class="noble-ui-logo d-block mb-2 text-center">REAL<span> Engine</span></a>
                                         <h5 class="text-muted fw-normal mb-4 text-center">Create a free account.</h5>
                                         <form class="forms-sample" action="" method="POST">
                                             <div class="mb-3">
