@@ -5,12 +5,13 @@ require_once 'core/init.php';
 
 if (Input::exists()) {
 
-   
+    //echo Input::get('password').'<br/>';
+    //echo Input::get('password_again');
 
     //CSRF Protection
     if (Token::check(Input::get('token'))) {
 
-        
+        //echo Input::get('username');
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
             'username' =>  array(
@@ -60,7 +61,7 @@ if (Input::exists()) {
                 ));
 
                 Session::flash('home', 'You are registered successfully. You can login now!');
-                Redirect::to('login.php');
+                //Redirect::to('login.php');
             } catch (Exception $e) {
                 Session::flash('Error', $e->getMessage().'<br />');
             }
@@ -82,11 +83,11 @@ if (Input::exists()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="A Powerful CRM for REALtors">
+    <meta name="description" content="A Powerful CRM for Realtors">
     <meta name="author" content="Live Web Design">
 
 
-    <title>REALEngine - A CRM built for REALtors</title>
+    <title>RealEngine - A CRM built for Realtors</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -126,7 +127,7 @@ if (Input::exists()) {
 
                                 <div class="col-12 p-3">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="noble-ui-logo d-block mb-2 text-center">REAL<span> Engine</span></a>
+                                        <a href="#" class="noble-ui-logo d-block mb-2 text-center">Real<span> Engine</span></a>
                                         <h5 class="text-muted fw-normal mb-4 text-center">Create a free account.</h5>
                                         <form class="forms-sample" action="" method="POST">
                                             <div class="mb-3">
