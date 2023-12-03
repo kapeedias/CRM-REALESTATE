@@ -19,7 +19,6 @@ if (Input::exists()) {
 
             if ($login) {
                 Redirect::to('myaccount.php');
-
             } else {
                 Session::flash('error', 'Login Failed. Please try again later');
                 echo "Login Failed";
