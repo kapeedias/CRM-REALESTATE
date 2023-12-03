@@ -83,11 +83,11 @@ if (Input::exists()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="A Powerful CRM for Realtors">
+    <meta name="description" content="A Powerful CRM for REALtors">
     <meta name="author" content="Live Web Design">
 
 
-    <title>RealEngine - A CRM built for Realtors</title>
+    <title>REALENGINE - A CRM built for REALtors</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,7 +127,7 @@ if (Input::exists()) {
 
                                 <div class="col-12 p-3">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="noble-ui-logo d-block mb-2 text-center">Real<span> Engine</span></a>
+                                        <a href="#" class="noble-ui-logo d-block mb-2 text-center">REAL<span> ENGINE</span></a>
                                         <h5 class="text-muted fw-normal mb-4 text-center">Create a free account.</h5>
                                         <form class="forms-sample" action="" method="POST">
                                             <div class="mb-3">

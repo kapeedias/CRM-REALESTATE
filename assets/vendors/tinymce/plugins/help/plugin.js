@@ -696,7 +696,7 @@
       },
       {
         key: 'rtc',
-        name: 'Real-Time Collaboration',
+        name: 'REAL-Time Collaboration',
         type: 'premium',
         slug: 'rtc-introduction'
       },

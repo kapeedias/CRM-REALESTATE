@@ -1932,7 +1932,7 @@ Initial list of features and changes is available at https://www.tiny.cloud/docs
 - Fixed bug where pressing the enter button inside of an h1 with contenteditable set to true would sometimes produce a p tag.
 - Fixed bug with backspace not working as expected before a noneditable element.
 - Fixed bug where operating on tables with invalid rowspans would cause an error to be thrown.
-- Fixed so a real base64 representation of the image is available on the blobInfo that the images_upload_handler gets called with.
+- Fixed so a REAL base64 representation of the image is available on the blobInfo that the images_upload_handler gets called with.
 - Fixed so the image upload tab is available when the images_upload_handler is defined (and not only when the images_upload_url is defined).
 
 ## 4.7.2 - 2017-11-07
@@ -2260,7 +2260,7 @@ Initial list of features and changes is available at https://www.tiny.cloud/docs
 - Fixed bug where selectors with "*" would cause the style format preview to throw an error.
 - Fixed bug with toggling lists off on lists with empty list items would throw an error.
 - Fixed bug where editing images would produce non existing blob uris.
-- Fixed bug where the offscreen toc selection would be treated as the real toc element.
+- Fixed bug where the offscreen toc selection would be treated as the REAL toc element.
 - Fixed bug where the aria level attribute for element path would have an incorrect start index.
 - Fixed bug where the offscreen selection of cE=false that where very wide would be shown onscreen. Patch contributed by Steven Bufton.
 - Fixed so the default_link_target gets applied to links created by the autolink plugin.
@@ -2331,7 +2331,7 @@ Initial list of features and changes is available at https://www.tiny.cloud/docs
 - Fixed various api documentation issues and typos.
 
 ### Removed
-- Removed layer plugin since it wasn't really ported from 3.x and there doesn't seem to be much use for it.
+- Removed layer plugin since it wasn't REALly ported from 3.x and there doesn't seem to be much use for it.
 - Removed moxieplayer.swf from the media plugin since it wasn't used by the media plugin.
 - Removed format state from the advlist plugin to be more consistent with common word processors.
 

@@ -379,7 +379,7 @@
 		 *
 		 *  @example
 		 *    $(document).ready(function() {
-		 *      // This example is fairly pointless in reality, but shows how fnDestroy can be used
+		 *      // This example is fairly pointless in REALity, but shows how fnDestroy can be used
 		 *      var oTable = $('#example').dataTable();
 		 *      oTable.fnDestroy();
 		 *    } );
@@ -1508,7 +1508,7 @@
 	 * @return {boolean} true if all unique, false otherwise
 	 * @ignore
 	 */
-	var _areAllUnique = function ( src ) {
+	var _aREALlUnique = function ( src ) {
 		if ( src.length < 2 ) {
 			return true;
 		}
@@ -1537,7 +1537,7 @@
 	 */
 	var _unique = function ( src )
 	{
-		if ( _areAllUnique( src ) ) {
+		if ( _aREALlUnique( src ) ) {
 			return src.slice();
 		}
 	
@@ -5398,7 +5398,7 @@
 		}
 	
 		// Hidden header should have zero height, so remove padding and borders. Then
-		// set the width based on the real headers
+		// set the width based on the REAL headers
 	
 		// Apply all styles in one pass
 		_fnApplyToChildren( zeroOut, headerSrcEls );
@@ -5659,7 +5659,7 @@
 	
 			// Clone the table header and footer - we can't use the header / footer
 			// from the cloned table, since if scrolling is active, the table's
-			// real header and footer are contained in different table tags
+			// REAL header and footer are contained in different table tags
 			tmpTable.find('thead, tfoot').remove();
 			tmpTable
 				.append( $(oSettings.nTHead).clone() )
@@ -5989,7 +5989,7 @@
 	 * Change the order of the table
 	 *  @param {object} oSettings dataTables settings object
 	 *  @memberof DataTable#oApi
-	 *  @todo This really needs split up!
+	 *  @todo This REALly needs split up!
 	 */
 	function _fnSort ( oSettings )
 	{
@@ -8063,7 +8063,7 @@
 			// of if the tr element has been created or not, so can't rely upon
 			// jQuery here - hence a custom implementation. This does not match
 			// Sizzle's fast selector or HTML4 - in HTML5 the ID can be anything,
-			// but to select it using a CSS selector engine (like Sizzle or
+			// but to select it using a CSS selector ENGINE (like Sizzle or
 			// querySelect) it would need to need to be escaped for some characters.
 			// DataTables simplifies this for row selectors since you can select
 			// only a row. A # indicates an id any anything that follows is the id -
@@ -10118,7 +10118,7 @@
 		 *          ['Trident', 'Internet Explorer 5.0', 'Win 95+', 5, 'C'],
 		 *        ],
 		 *        "columns": [
-		 *          { "title": "Engine" },
+		 *          { "title": "ENGINE" },
 		 *          { "title": "Browser" },
 		 *          { "title": "Platform" },
 		 *          { "title": "Version" },
@@ -10133,14 +10133,14 @@
 		 *      $('#example').dataTable( {
 		 *        "data": [
 		 *          {
-		 *            "engine":   "Trident",
+		 *            "ENGINE":   "Trident",
 		 *            "browser":  "Internet Explorer 4.0",
 		 *            "platform": "Win 95+",
 		 *            "version":  4,
 		 *            "grade":    "X"
 		 *          },
 		 *          {
-		 *            "engine":   "Trident",
+		 *            "ENGINE":   "Trident",
 		 *            "browser":  "Internet Explorer 5.0",
 		 *            "platform": "Win 95+",
 		 *            "version":  5,
@@ -10148,7 +10148,7 @@
 		 *          }
 		 *        ],
 		 *        "columns": [
-		 *          { "title": "Engine",   "data": "engine" },
+		 *          { "title": "ENGINE",   "data": "ENGINE" },
 		 *          { "title": "Browser",  "data": "browser" },
 		 *          { "title": "Platform", "data": "platform" },
 		 *          { "title": "Version",  "data": "version" },
@@ -11732,7 +11732,7 @@
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
 			 *        "language": {
-			 *          "infoPostFix": "All records shown are derived from real information."
+			 *          "infoPostFix": "All records shown are derived from REAL information."
 			 *        }
 			 *      } );
 			 *    } );
@@ -12566,7 +12566,7 @@
 		 *    // Read table data from objects
 		 *    // JSON structure for each row:
 		 *    //   {
-		 *    //      "engine": {value},
+		 *    //      "ENGINE": {value},
 		 *    //      "browser": {value},
 		 *    //      "platform": {value},
 		 *    //      "version": {value},
@@ -12576,7 +12576,7 @@
 		 *      $('#example').dataTable( {
 		 *        "ajaxSource": "sources/objects.txt",
 		 *        "columns": [
-		 *          { "data": "engine" },
+		 *          { "data": "ENGINE" },
 		 *          { "data": "browser" },
 		 *          { "data": "platform" },
 		 *          { "data": "version" },
@@ -12589,7 +12589,7 @@
 		 *    // Read information from deeply nested objects
 		 *    // JSON structure for each row:
 		 *    //   {
-		 *    //      "engine": {value},
+		 *    //      "ENGINE": {value},
 		 *    //      "browser": {value},
 		 *    //      "platform": {
 		 *    //         "inner": {value}
@@ -12602,7 +12602,7 @@
 		 *      $('#example').dataTable( {
 		 *        "ajaxSource": "sources/deep.txt",
 		 *        "columns": [
-		 *          { "data": "engine" },
+		 *          { "data": "ENGINE" },
 		 *          { "data": "browser" },
 		 *          { "data": "platform.inner" },
 		 *          { "data": "details.0" },
@@ -12728,7 +12728,7 @@
 		 *      $('#example').dataTable( {
 		 *        "ajaxSource": "sources/deep.txt",
 		 *        "columns": [
-		 *          { "data": "engine" },
+		 *          { "data": "ENGINE" },
 		 *          { "data": "browser" },
 		 *          {
 		 *            "data": "platform",
@@ -12941,7 +12941,7 @@
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "columnDefs": [
-		 *          { "name": "engine", "targets": [ 0 ] },
+		 *          { "name": "ENGINE", "targets": [ 0 ] },
 		 *          { "name": "browser", "targets": [ 1 ] },
 		 *          { "name": "platform", "targets": [ 2 ] },
 		 *          { "name": "version", "targets": [ 3 ] },
@@ -12955,7 +12955,7 @@
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "columns": [
-		 *          { "name": "engine" },
+		 *          { "name": "ENGINE" },
 		 *          { "name": "browser" },
 		 *          { "name": "platform" },
 		 *          { "name": "version" },
@@ -12969,7 +12969,7 @@
 	
 		/**
 		 * Defines a data source type for the ordering which can be used to read
-		 * real-time information from the table (updating the internally cached
+		 * REAL-time information from the table (updating the internally cached
 		 * version) prior to ordering. This allows ordering to occur on user
 		 * editable elements such as form inputs.
 		 *  @type string
@@ -13142,7 +13142,7 @@
 	 * NOT be manipulated outside of DataTables. Any configuration should be done
 	 * through the initialisation options.
 	 *  @namespace
-	 *  @todo Really should attach the settings object to individual instances so we
+	 *  @todo REALly should attach the settings object to individual instances so we
 	 *    don't need to create new instances on each $().dataTable() call (if the
 	 *    table already exists). It would also save passing oSettings around and
 	 *    into every single function. However, this is a very significant
@@ -13471,7 +13471,7 @@
 		 * Note that this parameter will be set by the initialisation routine. To
 		 * set a default use {@link DataTable.defaults}.
 		 *  @type array
-		 *  @todo These inner arrays should really be objects
+		 *  @todo These inner arrays should REALly be objects
 		 */
 		"aaSorting": null,
 	
@@ -15428,7 +15428,7 @@
 	
 	
 	/*
-	 * This is really a good bit rubbish this method of exposing the internal methods
+	 * This is REALly a good bit rubbish this method of exposing the internal methods
 	 * publicly... - To be fixed in 2.0 using methods on the prototype
 	 */
 	

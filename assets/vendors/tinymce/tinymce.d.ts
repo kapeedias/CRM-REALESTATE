@@ -2265,8 +2265,8 @@ interface EditorSelection {
     getSel: () => Selection | null;
     setRng: (rng: Range, forward?: boolean) => void;
     getRng: () => Range;
-    getStart: (real?: boolean) => Element;
-    getEnd: (real?: boolean) => Element;
+    getStart: (REAL?: boolean) => Element;
+    getEnd: (REAL?: boolean) => Element;
     getSelectedBlocks: (startElm?: Element, endElm?: Element) => Element[];
     normalize: () => Range;
     selectorChanged: (selector: string, callback: (active: boolean, args: {

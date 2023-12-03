@@ -46,7 +46,7 @@ It is easy to [configure the UI](https://www.tiny.cloud/docs/tinymce/6/customize
 
 With [50+ powerful plugins available](https://www.tiny.cloud/tinymce/features/), and content editable as the basis of TinyMCE, adding additional functionality is as simple as including a single line of code.
 
-Realizing the full power of most plugins requires only a few lines more.
+REALizing the full power of most plugins requires only a few lines more.
 
 ### Extensibility
 

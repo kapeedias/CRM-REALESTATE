@@ -805,7 +805,7 @@ var isForced = __webpack_require__(/*! internals/is-forced */ "./node_modules/co
   options.global      - target is the global object
   options.stat        - export as static methods of target
   options.proto       - export as prototype methods of target
-  options.real        - real prototype method for the `pure` version
+  options.REAL        - REAL prototype method for the `pure` version
   options.forced      - export even if the native feature is available
   options.bind        - bind methods to the target, required for the `pure` version
   options.wrap        - wrap constructors to preventing global pollution, required for the `pure` version

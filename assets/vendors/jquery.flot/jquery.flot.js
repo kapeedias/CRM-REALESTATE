@@ -159,7 +159,7 @@ Licensed under the MIT license.
 		}
 
 		// Save the context, so we can reset in case we get replotted.  The
-		// restore ensure that we're really back at the initial state, and
+		// restore ensure that we're REALly back at the initial state, and
 		// should be safe even if we haven't saved the initial state yet.
 
 		context.restore();
@@ -907,7 +907,7 @@ Licensed under the MIT license.
 
         function axisNumber(obj, coord) {
             var a = obj[coord + "axis"];
-            if (typeof a == "object") // if we got a real axis, extract number
+            if (typeof a == "object") // if we got a REAL axis, extract number
                 a = a.n;
             if (typeof a != "number")
                 a = 1; // default to first axis

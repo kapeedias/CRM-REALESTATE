@@ -6635,9 +6635,9 @@
         return Optional.none();
       };
       const keydown = (event, start, soffset, finish, foffset, direction) => {
-        const realEvent = event.raw;
-        const keycode = realEvent.which;
-        const shiftKey = realEvent.shiftKey === true;
+        const REALEvent = event.raw;
+        const keycode = REALEvent.which;
+        const shiftKey = REALEvent.shiftKey === true;
         const handler = retrieve$1(container, annotations.selectedSelector).fold(() => {
           if (isNavigation(keycode) && !shiftKey) {
             annotations.clearBeforeUpdate(container);
@@ -6695,9 +6695,9 @@
       };
       const keyup = (event, start, soffset, finish, foffset) => {
         return retrieve$1(container, annotations.selectedSelector).fold(() => {
-          const realEvent = event.raw;
-          const keycode = realEvent.which;
-          const shiftKey = realEvent.shiftKey === true;
+          const REALEvent = event.raw;
+          const keycode = REALEvent.which;
+          const shiftKey = REALEvent.shiftKey === true;
           if (!shiftKey) {
             return Optional.none();
           }

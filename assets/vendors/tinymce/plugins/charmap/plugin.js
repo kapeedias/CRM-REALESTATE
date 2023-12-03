@@ -1214,7 +1214,7 @@
             ],
             [
               8476,
-              'real part symbol'
+              'REAL part symbol'
             ],
             [
               978,

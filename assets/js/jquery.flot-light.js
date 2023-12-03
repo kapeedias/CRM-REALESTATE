@@ -209,7 +209,7 @@ $(function() {
 
 
 
-  //  Real-Time Chart
+  //  REAL-Time Chart
   var data = [],
     totalPoints = 300;
 
@@ -247,8 +247,8 @@ $(function() {
   // Set up the control widget
 
   var updateInterval = 30;
-  if ($("#flotRealTime").length) {
-    var plot = $.plot("#flotRealTime", [getRandomData()], {
+  if ($("#flotREALTime").length) {
+    var plot = $.plot("#flotREALTime", [getRandomData()], {
       series: {
         shadowSize: 0, // Drawing is faster without shadows
         lines: {

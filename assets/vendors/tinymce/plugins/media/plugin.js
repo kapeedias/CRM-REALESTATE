@@ -1080,40 +1080,40 @@
             if (!node.parent) {
               continue;
             }
-            const realElmName = node.attr(name);
-            const realElm = new global$2(realElmName, 1);
-            if (realElmName !== 'audio' && realElmName !== 'script') {
+            const REALElmName = node.attr(name);
+            const REALElm = new global$2(REALElmName, 1);
+            if (REALElmName !== 'audio' && REALElmName !== 'script') {
               const className = node.attr('class');
               if (className && className.indexOf('mce-preview-object') !== -1 && node.firstChild) {
-                realElm.attr({
+                REALElm.attr({
                   width: node.firstChild.attr('width'),
                   height: node.firstChild.attr('height')
                 });
               } else {
-                realElm.attr({
+                REALElm.attr({
                   width: node.attr('width'),
                   height: node.attr('height')
                 });
               }
             }
-            realElm.attr({ style: node.attr('style') });
+            REALElm.attr({ style: node.attr('style') });
             const attribs = (_a = node.attributes) !== null && _a !== void 0 ? _a : [];
             let ai = attribs.length;
             while (ai--) {
               const attrName = attribs[ai].name;
               if (attrName.indexOf('data-mce-p-') === 0) {
-                realElm.attr(attrName.substr(11), attribs[ai].value);
+                REALElm.attr(attrName.substr(11), attribs[ai].value);
               }
             }
-            if (realElmName === 'script') {
-              realElm.attr('type', 'text/javascript');
+            if (REALElmName === 'script') {
+              REALElm.attr('type', 'text/javascript');
             }
             const innerHtml = node.attr('data-mce-html');
             if (innerHtml) {
-              const fragment = parseAndSanitize(editor, realElmName, unescape(innerHtml));
-              each$1(fragment.children(), child => realElm.append(child));
+              const fragment = parseAndSanitize(editor, REALElmName, unescape(innerHtml));
+              each$1(fragment.children(), child => REALElm.append(child));
             }
-            node.replace(realElm);
+            node.replace(REALElm);
           }
         });
       });

@@ -12075,7 +12075,7 @@
         }
       });
       const systemApi = {
-        debugInfo: constant$1('real'),
+        debugInfo: constant$1('REAL'),
         triggerEvent: (eventName, target, data) => {
           monitorEvent(eventName, target, logger => triggerOnUntilStopped(lookup, eventName, data, target, logger));
         },
@@ -14726,7 +14726,7 @@
     const isExpandingMenuItem = item => has$2(item, 'getSubmenuItems');
     const separator$2 = { type: 'separator' };
     const unwrapReferences = (items, menuItems) => {
-      const realItems = foldl(items, (acc, item) => {
+      const REALItems = foldl(items, (acc, item) => {
         if (isMenuItemReference(item)) {
           if (item === '') {
             return acc;
@@ -14741,10 +14741,10 @@
           return acc.concat([item]);
         }
       }, []);
-      if (realItems.length > 0 && isSeparator$2(realItems[realItems.length - 1])) {
-        realItems.pop();
+      if (REALItems.length > 0 && isSeparator$2(REALItems[REALItems.length - 1])) {
+        REALItems.pop();
       }
-      return realItems;
+      return REALItems;
     };
     const getFromExpandingItem = (item, menuItems) => {
       const submenuItems = item.getSubmenuItems();
@@ -14762,8 +14762,8 @@
       return deepMerge({ value: itemValue }, item);
     };
     const expand = (items, menuItems) => {
-      const realItems = unwrapReferences(isString(items) ? items.split(' ') : items, menuItems);
-      return foldr(realItems, (acc, item) => {
+      const REALItems = unwrapReferences(isString(items) ? items.split(' ') : items, menuItems);
+      return foldr(REALItems, (acc, item) => {
         if (isExpandingMenuItem(item)) {
           const itemWithValue = generateValueIfRequired(item);
           const newData = getFromExpandingItem(itemWithValue, menuItems);
