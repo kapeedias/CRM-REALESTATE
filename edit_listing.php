@@ -71,7 +71,9 @@ if (isset($_POST["doUpdate"]) == 'Update') {
         $updated_on = Date('Y-m-d H:i:s');
         $status = $_POST['status'];
         $mlsid = $_POST['mlsid'];
-        echo $current_image = $_POST['current_image'];
+        $beds = $_POST['beds'];
+        $bath = $_POST['bath'];
+        $current_image = $_POST['current_image'];
 
         $mls_listing_folder = $mls_img_upload . "/" . $mlsid;
 
@@ -80,14 +82,14 @@ if (isset($_POST["doUpdate"]) == 'Update') {
             mkdir($mls_listing_folder, 0777, true);
         }
 
-         // File upload handling
-         $file_name = $_FILES['property_image']['name'];
-         $file_tmp = $_FILES['property_image']['tmp_name'];
-         $file_type = $_FILES['property_image']['type'];
-        
-         $destination_path = $mls_listing_folder . '/' . $file_name;
-         move_uploaded_file($file_tmp, $destination_path);
-         $file_url = 'https://gobeyondrealestate.com/assets/img/mls/' . $mlsid . '/' . $file_name;
+        // File upload handling
+        $file_name = $_FILES['property_image']['name'];
+        $file_tmp = $_FILES['property_image']['tmp_name'];
+        $file_type = $_FILES['property_image']['type'];
+
+        $destination_path = $mls_listing_folder . '/' . $file_name;
+        move_uploaded_file($file_tmp, $destination_path);
+        $file_url = 'https://gobeyondrealestate.com/assets/img/mls/' . $mlsid . '/' . $file_name;
 
 
         // Your SQL update query
@@ -100,6 +102,8 @@ if (isset($_POST["doUpdate"]) == 'Update') {
                 property_image = :property_image,
                 updated_by = :updated_by,
                 updated_on = :updated_on,
+                beds = :beds,
+                bath = :bath,
                 status = :status
                 WHERE id = :lid";
 
@@ -114,20 +118,20 @@ if (isset($_POST["doUpdate"]) == 'Update') {
         $stmt->bindParam(':property_image', $file_url);
         $stmt->bindParam(':updated_by', $updated_by);
         $stmt->bindParam(':updated_on', $updated_on);
+        $stmt->bindParam(':beds', $beds);
+        $stmt->bindParam(':bath', $bath);
         $stmt->bindParam(':status', $status);
         $stmt->execute();
 
-        $current_img_path = $mls_listing_folder.'/'. basename($current_image);
-        
+        $current_img_path = $mls_listing_folder . '/' . basename($current_image);
+
 
         if (file_exists($current_img_path)) {
             // Attempt to delete the file
             if (unlink($current_img_path)) {
-                echo 'File deleted successfully.';
-            } 
-        }else{
-            echo "Errpr";
-        }
+                //
+            }
+        } 
 
         $msg[] = "Update successful!";
         header("Location: edit_listing.php?id=$lid");
@@ -289,10 +293,25 @@ if (isset($_POST["doUpdate"]) == 'Update') {
                                                 <label for="sqft" class="form-label">Area / Sq.Ft</label>
                                                 <input type="text" class="form-control text-danger" id="sqft" name="sqft" value="<?php echo $listing['sqft']; ?>">
                                             </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label for="beds" class="form-label">Beds</label>
+                                                        <input type="text" class="form-control text-danger" id="beds" name="beds" value="<?php echo $listing['beds']; ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <label for="bath" class="form-label">Bath</label>
+                                                        <input type="text" class="form-control text-danger" id="bath" name="bath" value="<?php echo $listing['bath']; ?>">
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="property_url" class="form-label"><a href="<?php echo $listing['property_url']; ?>" target="_blank">Property URL</a></label>
                                                 <input type="text" class="form-control text-danger" id="property_url" name="property_url" value="<?php echo $listing['property_url']; ?>">
                                             </div>
+
                                             <div class="mb-3">
                                                 <label for="status" class="form-label">Status</label>
                                                 <select name="status" id="status" class="form-control text-danger">
