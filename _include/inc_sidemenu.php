@@ -76,7 +76,7 @@
         </div>
     </li>
     <li class="nav-item nav-category"><a href="mailto:sai@livewd.ca">Help</a></li>
-    <?php if($user->hasPermission("admin")){?>
-    <li class="nav-item nav-category"><a href="mailto:sai@livewd.ca">Help</a></li>
-    <?php } ?>
+    
+    
+  
 </ul>
