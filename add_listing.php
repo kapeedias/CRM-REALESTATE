@@ -58,21 +58,14 @@ if (isset($_POST["doAdd"]) == 'Add') {
             mkdir($mls_listing_folder, 0777, true);
 
             // Check if the directory was created successfully
-            if (is_dir($mls_listing_folder)) {
-                echo "Directory '$mls_listing_folder' created successfully.";
-            } else {
-                echo "Failed to create directory '$mls_listing_folder'.";
-            }
-        } else {
-            echo "Directory '$mls_listing_folder' already exists.";
-        }
-
-
-
+            //if (is_dir($mls_listing_folder)) {
+            //    echo "Directory '$mls_listing_folder' created successfully.";
+            //} 
+        } 
 
         // Your SQL insert query with mlsid and created_ columns
         $sql = "INSERT INTO listings (mlsid, price, address1, property_description, sqft, property_url, created_by, created_on, status)
-VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by, :created_on, :status)";
+        VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by, :created_on, :status)";
 
         // Prepare and execute the query
         $stmt = $pdo->prepare($sql);
@@ -86,8 +79,6 @@ VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, 
         $stmt->bindParam(':created_on', $created_on); // Change updated_on to created_on
         $stmt->bindParam(':status', $status);
         $stmt->execute();
-
-
         $msg[] = "Added new listing successful!";
         header("Location: view_active_listings.php");
     } else {
@@ -97,9 +88,6 @@ VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, 
         }
     }
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
