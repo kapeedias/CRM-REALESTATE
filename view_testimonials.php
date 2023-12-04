@@ -159,8 +159,8 @@ try {
                           <tr>
                             <td><?php echo $listing['id']; ?></td>
                             <td><?php echo $listing['customer']; ?></td>
-                            <td><textarea disabled row="3"><?php echo $listing['testimonial']; ?></textarea></td>
-                            <td><?php echo $listing['status']; ?></td>
+                            <td><textarea disabled row="3" class="form-control"><?php echo $listing['testimonial']; ?></textarea></td>
+                            <td><?php if($listing['active']) { echo "Active"; } else { echo "Inactive"; } ?></td>
                             <td><a href="edit_testimonial.php?id=<?php echo $listing['id']; ?>"><i data-feather="edit-2"></i></a></td>
                           </tr>
                         <?php endforeach; ?>
