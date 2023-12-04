@@ -127,9 +127,34 @@ if (isset($_POST["doAdd"]) == 'Add') {
 
 */
 if (isset($_POST["doAdd"]) && $_POST["doAdd"] == 'Add') {
-    if (empty($_POST['mlsid']) || empty($_POST['price']) || empty($_POST['address1']) || empty($_POST['description']) || empty($_POST['sqft']) || empty($_POST['property_url']) || empty($_FILES['property_image']['name'])) {
-        $err[] = "All fields, including MLS ID, price, address, description, area, property URL, and property image, are required.";
+    if (empty($_POST['mlsid'])) {
+        $err[] = "MLS ID cannot be blank";
     }
+    
+    if (empty($_POST['price'])) {
+        $err[] = "Price cannot be blank";
+    }
+    
+    if (empty($_POST['address1'])) {
+        $err[] = "Address1 cannot be blank";
+    }
+    
+    if (empty($_POST['description'])) {
+        $err[] = "Property Description cannot be blank";
+    }
+    
+    if (empty($_POST['sqft'])) {
+        $err[] = "Area / SQFT cannot be blank";
+    }
+    
+    if (empty($_POST['property_url'])) {
+        $err[] = "Property URL cannot be blank";
+    }
+    
+    if (empty($_FILES['property_image']['name'])) {
+        $err[] = 'Property Image cannot be empty.';
+    }
+    
 
     if (empty($err)) {
         $mlsid = $_POST['mlsid'];
