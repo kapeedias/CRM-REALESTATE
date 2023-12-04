@@ -212,7 +212,6 @@ if (isset($_POST["doAdd"]) && $_POST["doAdd"] == 'Add') {
     }
 }
 ?>
-?>
 
 <!DOCTYPE html>
 <html lang="en">
