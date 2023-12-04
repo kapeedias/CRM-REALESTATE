@@ -140,42 +140,42 @@ try {
             <!-- Top Nav Bar End -->
             <?php if (!empty($listings)) : ?>
                 <div class="page-content">
-                <?php foreach ($listings as $listing) : ?>
-                    <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
-                        <div>
-                            <h4 class="mb-3 mb-md-0">MLSID: <?php echo $listing['mlsid']; ?></h4>
+                    <?php foreach ($listings as $listing) : ?>
+                        <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+                            <div>
+                                <h4 class="mb-3 mb-md-0">MLSID: <?php echo $listing['mlsid']; ?></h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body">
+                        <div class="card-body">
 
-        <h6 class="card-title">Basic Form</h6>
+                            <h6 class="card-title">Basic Form</h6>
 
-        <form class="forms-sample">
-          <div class="mb-3">
-            <label for="exampleInputUsername1" class="form-label">Username</label>
-            <input type="text" class="form-control" id="exampleInputUsername1" autocomplete="off" placeholder="Username">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="off" placeholder="Password">
-          </div>
-          <div class="form-check mb-3">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">
-              Remember me
-            </label>
-          </div>
-          <button type="submit" class="btn btn-primary me-2">Submit</button>
-          <button class="btn btn-secondary">Cancel</button>
-        </form>
+                            <form class="forms-sample">
+                                <div class="mb-3">
+                                    <label for="exampleInputUsername1" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="exampleInputUsername1" autocomplete="off" placeholder="Username">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="off" placeholder="Password">
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">
+                                        Remember me
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                <button class="btn btn-secondary">Cancel</button>
+                            </form>
 
-      </div>
+                        </div>
 
-                        
+
 
                     <?php endforeach; ?>
                 </div>
