@@ -173,9 +173,9 @@ if (isset($_POST["doAdd"]) && $_POST["doAdd"] == 'Add') {
         }
 
         // File upload handling
-        $file_name = $_POST['property_image']['name'];
+        $file_name = $_FILES['property_image']['name'];
         $file_tmp = $_FILES['property_image']['tmp_name'];
-        echo $file_type = $_FILES['property_image']['type'];
+        $file_type = $_FILES['property_image']['type'];
 
         // Validate file type to allow images and videos only
         $allowed_types = array('image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/mpeg', 'video/quicktime');
