@@ -53,7 +53,7 @@ if (isset($_POST["doAdd"]) == 'Add') {
         $sqft = $_POST['sqft'];
         $property_url = $_POST['property_url'];
         $created_by = $user->data()->username;
-        $created_on = Date('Y-m-d H:i:s');
+        //$created_on = Date('Y-m-d H:i:s');
         $status = $_POST['status'];
 
 
@@ -77,8 +77,8 @@ if (isset($_POST["doAdd"]) == 'Add') {
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           
         // Your SQL insert query with mlsid and created_ columns
-        $sql = "INSERT INTO listings (mlsid, price, address1, property_description, sqft, property_url, created_by, created_on, status)
-        VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by, :created_on, :status)";
+        $sql = "INSERT INTO listings (mlsid, price, address1, property_description, sqft, property_url, created_on, status)
+        VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_on, :status)";
 
         // Prepare and execute the query
         $stmt = $pdo->prepare($sql);
@@ -88,7 +88,7 @@ if (isset($_POST["doAdd"]) == 'Add') {
         $stmt->bindParam(':property_description', $property_description);
         $stmt->bindParam(':sqft', $sqft);
         $stmt->bindParam(':property_url', $property_url);
-        $stmt->bindParam(':created_by', $created_by); // Change updated_by to created_by
+        //$stmt->bindParam(':created_by', $created_by); // Change updated_by to created_by
         $stmt->bindParam(':created_on', $created_on); // Change updated_on to created_on
         $stmt->bindParam(':status', $status);
         $stmt->execute();
