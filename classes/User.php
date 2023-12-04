@@ -25,6 +25,17 @@ class User
         }
     }
 
+    public function update($fields = array(), $id = null){
+        if(!$id && $this->isLoggedIn()){
+            $id = $this->data()->id;
+        }
+
+        if(!$this->_db->update('cms_users',$id, $fields)) {
+            throw new Exception('There was a problem updating user profile');
+        }
+    }
+
+
     public function create($fields = array())
     {
         if ($this->_db->insert('crm_users', $fields)) {
