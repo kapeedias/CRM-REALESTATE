@@ -17,7 +17,7 @@ try {
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   // Your SQL query
-  $sql = "SELECT * FROM testimoinals WHERE active = '1'";
+  $sql = "SELECT * FROM testimonials WHERE active = '1'";
 
   // Prepare and execute the query
   $stmt = $pdo->prepare($sql);
