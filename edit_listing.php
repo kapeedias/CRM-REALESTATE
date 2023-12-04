@@ -246,10 +246,6 @@ if (isset($_POST["doUpdate"]) == 'Update') {
                                                 <input type="text" class="form-control text-danger" id="address1" name="address1" value="<?php echo $listing['address1']; ?>" required>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="address2" class="form-label">Address 2</label>
-                                                <input type="text" class="form-control text-danger" id="address2" name="address2" value="<?php echo $listing['address2']; ?>">
-                                            </div>
-                                            <div class="mb-3">
                                                 <label for="description" class="form-label">Description</label>
                                                 <textarea class="form-control text-danger" id="description" name="description" row="3" required><?php echo $listing['property_description']; ?></textarea>
                                             </div>
