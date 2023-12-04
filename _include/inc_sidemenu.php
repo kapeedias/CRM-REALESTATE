@@ -58,6 +58,24 @@
             </ul>
         </div>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#advancedUI" role="button" aria-expanded="false" aria-controls="advancedUI">
+            <i class="link-icon" data-feather="square"></i>
+            <span class="link-title">Testimonials</span>
+            <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+        <div class="collapse" id="advancedUI">
+            <ul class="nav sub-menu">
+                <li class="nav-item">
+                    <a href="add_testimonial.php" class="nav-link">Add Testimonial</a>
+                </li>
+                <li class="nav-item">
+                    <a href="view_testimonial.php" class="nav-link">View / Manage Testimonial</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+   
    
     <li class="nav-item nav-category">Content</li>
     <li class="nav-item">
