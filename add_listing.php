@@ -370,7 +370,7 @@ if (isset($_POST["doAdd"]) && $_POST["doAdd"] == 'Add') {
                                     </div>
                                     <div class=" mb-3">
                                         <label for="property_image" class="form-label">Property Image</label>
-                                        <input type="file[]" class="form-control" name="property_image" id="property_image" accept="image/*" required>
+                                        <input type="file" class="form-control" name="property_image" id="property_image" accept="image/*" required>
                                     </div>
                                     <div class=" mb-3">
                                         <label for="description" class="form-label">Description</label>
