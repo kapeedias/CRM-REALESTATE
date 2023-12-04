@@ -3,7 +3,7 @@ require_once 'core/init.php';
 require_once 'classes/Listings.php';
 
 $publicHtmlPath = dirname(__DIR__);
-$mls_img_upload = $publicHtmlPath."/assets/img/mls";
+$mls_img_upload = $publicHtmlPath . "/assets/img/mls";
 
 
 $err = array();
@@ -57,7 +57,7 @@ if (isset($_POST["doAdd"]) == 'Add') {
         $status = $_POST['status'];
 
 
-        $mls_listing_folder = $mls_img_upload."/".$mlsid;
+        $mls_listing_folder = $mls_img_upload . "/" . $mlsid;
 
         // Check if the directory doesn't exist, then create it
         if (!is_dir($mls_listing_folder)) {
@@ -68,48 +68,42 @@ if (isset($_POST["doAdd"]) == 'Add') {
             //if (is_dir($mls_listing_folder)) {
             //    echo "Directory '$mls_listing_folder' created successfully.";
             //} 
-        } 
+        }
         try {
             // Create a PDO connection
             $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-          
+
             // Set the PDO error mode to exception
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          
-        // Your SQL insert query with mlsid and created_ columns
-        $sql = "INSERT INTO listings (mlsid, price, address1, property_description, sqft, property_url, created_by, status)
-        VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by, :statuss)";
 
-        // Prepare and execute the query
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':mlsid', $mlsid); // Add this line for mlsid
-        $stmt->bindParam(':price', $price);
-        $stmt->bindParam(':address1', $address1);
-        $stmt->bindParam(':property_description', $property_description);
-        $stmt->bindParam(':sqft', $sqft);
-        $stmt->bindParam(':property_url', $property_url);
-        $stmt->bindParam(':created_by', $created_by); // Change updated_by to created_by
-        //$stmt->bindParam(':created_on', $created_on); // Change updated_on to created_on
-        $stmt->bindParam(':statuss', $status);
-        $stmt->execute();
+            $sql = "INSERT INTO listings (mlsid, price, address1, property_description, sqft, property_url, created_by)
+            VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by)";
 
-        // Get the last inserted ID
-        
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-            if($stmt){
-                $lastInsertedId = $pdo->lastInsertId();  
-                $msg[] = "Added new listing successful!";
+            // Prepare and execute the query
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':mlsid', $mlsid);
+            $stmt->bindParam(':price', $price);
+            $stmt->bindParam(':address1', $address1);
+            $stmt->bindParam(':property_description', $property_description);
+            $stmt->bindParam(':sqft', $sqft);
+            $stmt->bindParam(':property_url', $property_url);
+            $stmt->bindParam(':created_by', $created_by);
+           // $stmt->bindParam(':status', $status);
+            $stmt->execute();
+
+            // Get the last inserted ID
+            $lastInsertedId = $pdo->lastInsertId();
+
+            // Check if the insertion was successful
+            if ($lastInsertedId) {
+                $msg[] = "Added new listing successfully!";
                 header("Location: edit_listings.php?id=$lastInsertedId");
-            }else{
+            } else {
                 echo "Error";
             }
-
-
         } catch (PDOException $e) {
-            echo ''. $e->getMessage();
+            echo '' . $e->getMessage();
         }
-       
     } else {
         // Output errors
         foreach ($err as $error) {
@@ -245,27 +239,27 @@ if (isset($_POST["doAdd"]) == 'Add') {
                                     </div>
                                     <div class="mb-3">
                                         <label for="price" class="form-label">Price</label>
-                                        <input type="text" class="form-control text-danger" name="price" id="price"  placeholder="619,000" required>
+                                        <input type="text" class="form-control text-danger" name="price" id="price" placeholder="619,000" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="address1" class="form-label">Address 1</label>
                                         <input type="text" class="form-control text-danger" id="address1" name="address1" " required>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class=" mb-3">
                                         <label for="address2" class="form-label">Address 2</label>
                                         <input type="text" class="form-control text-danger" id="address2" name="address2" ">
                                     </div>
-                                    <div class="mb-3">
+                                    <div class=" mb-3">
                                         <label for="description" class="form-label">Description</label>
                                         <textarea class="form-control text-danger" id="description" name="description" row="3" required></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="sqft" class="form-label">Area / Sq.Ft</label>
-                                        <input type="text" class="form-control text-danger" id="sqft" name="sqft" >
+                                        <input type="text" class="form-control text-danger" id="sqft" name="sqft">
                                     </div>
                                     <div class="mb-3">
                                         <label for="property_url" class="form-label">Property URL</label>
-                                        <input type="text" class="form-control text-danger" id="property_url" name="property_url" >
+                                        <input type="text" class="form-control text-danger" id="property_url" name="property_url">
                                     </div>
                                     <div class="mb-3">
                                         <label for="status" class="form-label">Status</label>
