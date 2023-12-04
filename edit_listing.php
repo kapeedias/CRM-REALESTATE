@@ -95,11 +95,11 @@ if(isset($_POST["doUpdate"]) == 'Update') {
         $stmt->bindParam(':updated_on', $updated_on);
         $stmt->execute();
 
-        echo "Update successful!";
+        $msg[]= "Update successful!";
     } else {
         // Output errors
         foreach ($err as $error) {
-            echo $error . "<br>";
+            $err[]= $error . "<br>";
         }
     }
 
@@ -207,6 +207,15 @@ if(isset($_POST["doUpdate"]) == 'Update') {
                 </div>
             </nav>
             <!-- Top Nav Bar End -->
+
+                <?php
+
+    foreach ($err as $error) {  
+       
+            echo '<div class="alert alert-success text-center" role="alert">' . $error . '</div>';
+        }
+?>
+
             <?php if (!empty($listings)) : ?>
                 <div class="page-content">
                     <?php foreach ($listings as $listing) : ?>
