@@ -9,7 +9,7 @@ if (!$user->isLoggedIn()) {
     Redirect::to('login.php');
     die();
 }
-if(isset($_GET['id'])){
+if (isset($_GET['id'])) {
     $lid = $_GET['id'];
 }
 
@@ -40,28 +40,28 @@ try {
 }
 
 
-if(isset($_POST["doUpdate"]) == 'Update') {
-    
+if (isset($_POST["doUpdate"]) == 'Update') {
 
-    if(empty($_POST['lid'])) {
+
+    if (empty($_POST['lid'])) {
         $err[] = "Listing cannot be blank";
     }
-    if(empty($_POST['price'])) {
+    if (empty($_POST['price'])) {
         $err[] = "Price cannot be blank";
     }
-    if(empty($_POST['address1'])) {
+    if (empty($_POST['address1'])) {
         $err[] = "Address1 cannot be blank";
     }
-    if(empty($_POST['description'])) {
+    if (empty($_POST['description'])) {
         $err[] = "Property Description cannot be blank";
     }
-    if(empty($_POST['sqft'])) {
+    if (empty($_POST['sqft'])) {
         $err[] = "Area / SQFT cannot be blank";
     }
-    if(empty($_POST['property_url'])) {
+    if (empty($_POST['property_url'])) {
         $err[] = "Property URL cannot be blank";
     }
-    
+
     // If there are no input errors, perform the update
     if (empty($err)) {
         $lid = $_POST['lid'];
@@ -99,15 +99,14 @@ if(isset($_POST["doUpdate"]) == 'Update') {
         $stmt->bindParam(':status', $status);
         $stmt->execute();
 
-        $msg[]= "Update successful!";
+        $msg[] = "Update successful!";
         header("Location: edit_listing.php?id=$lid");
     } else {
         // Output errors
         foreach ($err as $error) {
-            $err[]= $error . "<br>";
+            $err[] = $error . "<br>";
         }
     }
-
 }
 
 
@@ -213,13 +212,7 @@ if(isset($_POST["doUpdate"]) == 'Update') {
             </nav>
             <!-- Top Nav Bar End -->
 
-                <?php
 
-    foreach ($err as $error) {  
-       
-            echo '<div class="alert alert-success text-center" role="alert">' . $error . '</div>';
-        }
-?>
 
             <?php if (!empty($listings)) : ?>
                 <div class="page-content">
@@ -232,6 +225,11 @@ if(isset($_POST["doUpdate"]) == 'Update') {
 
                         <div class="row">
                             <div class="col-md-6">
+                                <?php
+                                foreach ($err as $error) {
+                                    echo '<div class="alert alert-success text-center" role="alert">' . $error . '</div>';
+                                }
+                                ?>
                                 <div class="card">
                                     <div class="card-body">
 
@@ -266,19 +264,29 @@ if(isset($_POST["doUpdate"]) == 'Update') {
                                             <div class="mb-3">
                                                 <label for="status" class="form-label">Status</label>
                                                 <select name="status" id="status" class="form-control text-danger">
-                                                    <option value="ACTIVE" <?php if($listing['status'] =='ACTIVE'){ echo "selected"; } ?> >Active</option>
-                                                    <option value="SOLD" <?php if($listing['status'] =='SOLD'){ echo "selected"; } ?> >Sold</option>
-                                                    <option value="DELETED"  <?php if($listing['status'] =='DELETED'){ echo "selected"; } ?> >Deleted</option>
-                                                    <option value="INACTIVE"  <?php if($listing['status'] =='INACTIVE'){ echo "selected"; } ?> >Inactive</option>
+                                                    <option value="ACTIVE" <?php if ($listing['status'] == 'ACTIVE') {
+                                                                                echo "selected";
+                                                                            } ?>>Active</option>
+                                                    <option value="SOLD" <?php if ($listing['status'] == 'SOLD') {
+                                                                                echo "selected";
+                                                                            } ?>>Sold</option>
+                                                    <option value="DELETED" <?php if ($listing['status'] == 'DELETED') {
+                                                                                echo "selected";
+                                                                            } ?>>Deleted</option>
+                                                    <option value="INACTIVE" <?php if ($listing['status'] == 'INACTIVE') {
+                                                                                    echo "selected";
+                                                                                } ?>>Inactive</option>
                                                 </select>
                                             </div>
                                             <input type="submit" name="doUpdate" id="doUpdate" value="Update" class="btn btn-success" />
-                                            
+
                                         </form>
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="col-md-6">
+                                    <img src="<?php echo $listing['property_image']; ?>" style="max-width: 500px;"/>
+                            </div>
                         </div>
 
 
