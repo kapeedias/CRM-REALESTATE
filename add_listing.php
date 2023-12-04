@@ -77,8 +77,8 @@ if (isset($_POST["doAdd"]) == 'Add') {
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           
         // Your SQL insert query with mlsid and created_ columns
-        $sql = "INSERT INTO listings (mlsid, price, address1, property_description, sqft, property_url, created_by, created_on, [status])
-        VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by, :created_on, :[status])";
+        $sql = "INSERT INTO listings (mlsid, price, address1, property_description, sqft, property_url, created_by, created_on, status)
+        VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by, :created_on, :status)";
 
         // Prepare and execute the query
         $stmt = $pdo->prepare($sql);
