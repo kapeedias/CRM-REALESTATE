@@ -6,6 +6,12 @@ if (!$user->isLoggedIn()) {
   Redirect::to('login.php');
   die();
 }
+
+$listing = new Listing();
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -111,7 +117,7 @@ if (!$user->isLoggedIn()) {
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
           <div>
-            <h4 class="mb-3 mb-md-0">Welcome <?php echo $user->data()->first_name; ?></h4>
+            <h4 class="mb-3 mb-md-0">MLSID: <?php echo $listing->data()->mlsid; ?></h4>
           </div>
 
 
