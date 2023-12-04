@@ -71,6 +71,7 @@ if (isset($_POST["doUpdate"]) == 'Update') {
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':uname', $uname);
             $stmt->bindParam(':testimonial_text', $testimonial_text);
+            $stmt->bindParam(':id', $id);
             $stmt->execute();
 
             // Get the last inserted ID
