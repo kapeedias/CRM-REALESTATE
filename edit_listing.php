@@ -152,20 +152,24 @@ try {
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h6 class="card-title">Basic Form</h6>
+                                        <h6 class="card-title">MLSID: <?php echo $listing['mlsid']; ?></h6>
 
                                         <form class="forms-sample">
                                             <div class="mb-3">
-                                                <label for="exampleInputUsername1" class="form-label">Username</label>
-                                                <input type="text" class="form-control" id="exampleInputUsername1" autocomplete="off" placeholder="Username">
+                                                <label for="price" class="form-label">Price</label>
+                                                <input type="text" class="form-control" name="price" id="price" value="<?php echo $listing['price']; ?>" placeholder="619,000">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                                <label for="address1" class="form-label">Address 1</label>
+                                                <input type="text" class="form-control" id="address1" name="address1" value="<?php echo $listing['address1']; ?>">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="off" placeholder="Password">
+                                                <label for="address2" class="form-label">Address 2</label>
+                                                <input type="text" class="form-control" id="address2" name="address2" value="<?php echo $listing['address2']; ?>">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="description" class="form-label">Description</label>
+                                                <textarea class="form-control" id="description" name="description" row="3"><?php echo $listing['property_description']; ?></textarea>
                                             </div>
                                             <div class="form-check mb-3">
                                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
