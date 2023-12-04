@@ -239,17 +239,9 @@ VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, 
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
-
-
-
-                    <?php endforeach; ?>
                 </div>
-            <?php else : ?>
-                <p>No listings found.</p>
-            <?php endif; ?>
+           
             <!-- Footer Start -->
             <?php include('_include/inc_footer.php'); ?>
             <!-- Footer End -->
