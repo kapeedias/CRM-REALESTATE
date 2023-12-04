@@ -15,6 +15,13 @@ if (!$user->isLoggedIn()) {
     die();
 }
 
+// Replace these variables with your database credentials
+$servername = "localhost";
+$username = "cms_admin";
+$password = "cQ&cH_k)Xybr";
+$dbname = "cms_livewd";
+
+
 if (isset($_POST["doAdd"]) == 'Add') {
 
 
@@ -62,7 +69,13 @@ if (isset($_POST["doAdd"]) == 'Add') {
             //    echo "Directory '$mls_listing_folder' created successfully.";
             //} 
         } 
-
+        try {
+            // Create a PDO connection
+            $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+          
+            // Set the PDO error mode to exception
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          
         // Your SQL insert query with mlsid and created_ columns
         $sql = "INSERT INTO listings (mlsid, price, address1, property_description, sqft, property_url, created_by, created_on, [status])
         VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by, :created_on, :[status])";
@@ -82,7 +95,12 @@ if (isset($_POST["doAdd"]) == 'Add') {
 
         // Get the last inserted ID
         $lastInsertedId = $pdo->lastInsertId();
-
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        } catch (PDOException $e) {
+            echo ''. $e->getMessage();
+        }
+            
         $msg[] = "Added new listing successful!";
         header("Location: edit_listings.php?id=$lastInsertedId");
     } else {
