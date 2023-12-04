@@ -12,12 +12,9 @@ if (!$user->isLoggedIn()) {
 if (isset($_GET['id'])) {
     $lid = $_GET['id'];
 }
+$publicHtmlPath = dirname(__DIR__);
+$mls_img_upload = $publicHtmlPath . "/assets/img/mls";
 
-// Replace these variables with your database credentials
-$servername = "localhost";
-$username = "cms_admin";
-$password = "cQ&cH_k)Xybr";
-$dbname = "cms_livewd";
 
 try {
     // Create a PDO connection
@@ -73,6 +70,25 @@ if (isset($_POST["doUpdate"]) == 'Update') {
         $updated_by = $user->data()->username;
         $updated_on = Date('Y-m-d H:i:s');
         $status = $_POST['status'];
+        $mlsid = $_POST['mlsid'];
+        $current_image = $_POST['current_image'];
+
+        $mls_listing_folder = $mls_img_upload . "/" . $mlsid;
+
+        if (!is_dir($mls_listing_folder)) {
+            // The third parameter (true) specifies recursive creation, creating all necessary directories
+            mkdir($mls_listing_folder, 0777, true);
+        }
+
+         // File upload handling
+         $file_name = $_FILES['property_image']['name'];
+         $file_tmp = $_FILES['property_image']['tmp_name'];
+         $file_type = $_FILES['property_image']['type'];
+        
+         $destination_path = $mls_listing_folder . '/' . $file_name;
+         move_uploaded_file($file_tmp, $destination_path);
+         $file_url = 'https://gobeyondrealestate.com/assets/img/mls/' . $mlsid . '/' . $file_name;
+
 
         // Your SQL update query
         $sql = "UPDATE listings SET 
@@ -81,6 +97,7 @@ if (isset($_POST["doUpdate"]) == 'Update') {
                 property_description = :property_description,
                 sqft = :sqft,
                 property_url = :property_url,
+                property_image = :property_image,
                 updated_by = :updated_by,
                 updated_on = :updated_on,
                 status = :status
@@ -94,10 +111,15 @@ if (isset($_POST["doUpdate"]) == 'Update') {
         $stmt->bindParam(':property_description', $property_description);
         $stmt->bindParam(':sqft', $sqft);
         $stmt->bindParam(':property_url', $property_url);
+        $stmt->bindParam(':property_image', $file_url);
         $stmt->bindParam(':updated_by', $updated_by);
         $stmt->bindParam(':updated_on', $updated_on);
         $stmt->bindParam(':status', $status);
         $stmt->execute();
+
+        if (file_exists($current_image)) {  
+            unlink($current_image); 
+        }
 
         $msg[] = "Update successful!";
         header("Location: edit_listing.php?id=$lid");
@@ -239,6 +261,8 @@ if (isset($_POST["doUpdate"]) == 'Update') {
                                             <div class="mb-3">
                                                 <label for="price" class="form-label">Price</label>
                                                 <input type="hidden" name="lid" id="lid" value="<?php echo $listing['id']; ?>">
+                                                <input type="hidden" name="mlsid" id="mlsid" value="<?php echo $listing['mlsid']; ?>">
+                                                <input type="hidden" name="current_image" id="current_image" value="<?php echo $listing['property_image']; ?>">
                                                 <input type="text" class="form-control text-danger" name="price" id="price" value="<?php echo $listing['price']; ?>" placeholder="619,000" required>
                                             </div>
                                             <div class="mb-3">
@@ -248,6 +272,10 @@ if (isset($_POST["doUpdate"]) == 'Update') {
                                             <div class="mb-3">
                                                 <label for="description" class="form-label">Description</label>
                                                 <textarea class="form-control text-danger" id="description" name="description" row="3" required><?php echo $listing['property_description']; ?></textarea>
+                                            </div>
+                                            <div class=" mb-3">
+                                                <label for="property_image" class="form-label">Property Image</label>
+                                                <input type="file" class="form-control" name="property_image" id="property_image" accept="image/*" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="sqft" class="form-label">Area / Sq.Ft</label>
@@ -282,7 +310,7 @@ if (isset($_POST["doUpdate"]) == 'Update') {
                             </div>
                             <div class="col-md-6">
                                 <strong>Featured Image</strong>
-                                    <img src="<?php echo $listing['property_image']; ?>" style="max-width: 500px;"/>
+                                <img src="<?php echo $listing['property_image']; ?>" style="max-width: 500px;" />
                             </div>
                         </div>
 
