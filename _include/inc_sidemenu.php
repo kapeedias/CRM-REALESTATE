@@ -71,21 +71,7 @@
                 <li class="nav-item">
                     <a href="wp_contact.php" class="nav-link">Contact page</a>
                 </li>
-                <li class="nav-item">
-                    <a href="pages/general/faq.html" class="nav-link">Faq</a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/general/invoice.html" class="nav-link">Invoice</a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/general/profile.html" class="nav-link">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/general/pricing.html" class="nav-link">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/general/timeline.html" class="nav-link">Timeline</a>
-                </li>
+               
             </ul>
         </div>
     </li>
