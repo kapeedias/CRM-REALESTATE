@@ -5,26 +5,27 @@ require_once 'core/init.php';
 if (Input::exists()) {
     if (Token::check(Input::get('token'))) {
         $validate = new Validate();
-        $validation = $validate->check(
+        $validation = $validate->check($_POST,
             array(
                 'username' => array('required' => true),
-                'password' => array('required' => true),
+                'password' => array('required' => true)
             )
         );
 
         if ($validation->passed()) {
             $user = new User();
             $remember = (Input::get('remember') === 'on') ? true : false;
-            $login = $user->login(Input::get('username'), Input::get('password'), $remember);
+            $login = $user->login(Input::get('username'), Input::get('password'));
 
             if ($login) {
-                echo 'Success';
+                Redirect::to('myaccount.php');
             } else {
-                echo 'Login failed';
+                Session::flash('error', 'Login Failed. Please try again later');
+                echo "Login Failed";
             }
         } else {
             foreach ($validation->errors() as $error) {
-                echo $error . '<br>';
+                Session::flash('error', $error.'<br>');
             }
         }
     }
@@ -76,6 +77,11 @@ if (Input::exists()) {
 
                 <div class="row w-100 mx-0 auth-page">
                     <div class="col-md-4 col-xl-4 mx-auto">
+                        <?php
+                        if (Session::exists('home')) {
+                            echo '<div class="alert alert-success text-center" role="alert">' . Session::flash('home') . '</div>';
+                        }
+                        ?>
                         <div class="card">
                             <div class="row">
 
@@ -84,11 +90,11 @@ if (Input::exists()) {
                                         <a href="#" class="noble-ui-logo d-block mb-2 text-center">REAL<span> ENGINE</span></a>
                                         <form action="" method="POST" class="form">
                                             <div class="mb-3">
-                                                <label for="userEmail" class="form-label">Email address</label>
+                                                <label for="username" class="form-label">Email address</label>
                                                 <input type="text" name="username" id="username" value="<?php echo Input::get('username'); ?>" class="form-control" autocomplete="off" placeholder="Email" required="yes" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="userPassword" class="form-label">Password</label>
+                                                <label for="password" class="form-label">Password</label>
                                                 <input type="password" name="password" id="password" class="form-control" autocomplete="off" required="yes" />
                                             </div>
                                             <div class="form-check mb-3">
