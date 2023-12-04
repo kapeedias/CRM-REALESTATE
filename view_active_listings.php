@@ -153,6 +153,7 @@ try {
                     <table id="dataTableExample" class="table">
                       <thead>
                         <tr>
+                          <th>#</th>
                           <th>MLS</th>
                           <th>Price</th>
                           <th>Status</th>
@@ -163,6 +164,7 @@ try {
                       <tbody>
                         <?php foreach ($listings as $listing) : ?>
                           <tr>
+                            <td><?php echo $listing['id']; ?></td>
                             <td><?php echo $listing['mlsid']; ?></td>
                             <td>$ <?php echo $listing['price']; ?></td>
                             <td><?php echo $listing['status']; ?></td>
