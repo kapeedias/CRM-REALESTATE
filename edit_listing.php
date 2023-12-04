@@ -51,7 +51,7 @@ if(isset($_POST["doUpdate"]) == 'Update') {
     if(empty($_POST['address1'])) {
         $err[] = "Address1 cannot be blank";
     }
-    if(empty($_POST['property_description'])) {
+    if(empty($_POST['description'])) {
         $err[] = "Property Description cannot be blank";
     }
     if(empty($_POST['sqft'])) {
