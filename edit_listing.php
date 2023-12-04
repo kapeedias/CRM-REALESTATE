@@ -71,6 +71,7 @@ if(isset($_POST["doUpdate"]) == 'Update') {
         $property_url = $_POST['property_url'];
         $updated_by = $user->data()->username;
         $updated_on = Date('Y-m-d H:i:s');
+        $status = $_POST['status'];
 
         // Your SQL update query
         $sql = "UPDATE listings SET 
@@ -80,7 +81,8 @@ if(isset($_POST["doUpdate"]) == 'Update') {
                 sqft = :sqft,
                 property_url = :property_url,
                 updated_by = :updated_by,
-                updated_on = :updated_on
+                updated_on = :updated_on,
+                status = :status
                 WHERE id = :lid";
 
         // Prepare and execute the query
@@ -93,6 +95,7 @@ if(isset($_POST["doUpdate"]) == 'Update') {
         $stmt->bindParam(':property_url', $property_url);
         $stmt->bindParam(':updated_by', $updated_by);
         $stmt->bindParam(':updated_on', $updated_on);
+        $stmt->bindParam(':status', $status);
         $stmt->execute();
 
         $msg[]= "Update successful!";
