@@ -157,7 +157,7 @@ try {
                                         <form class="forms-sample">
                                             <div class="mb-3">
                                                 <label for="price" class="form-label">Price</label>
-                                                <input type="text" class="form-control" name="price" id="price" value="<?php echo $listing['price']; ?>" placeholder="619,000">
+                                                <input type="text" class="form-control text-danger" name="price" id="price" value="<?php echo $listing['price']; ?>" placeholder="619,000">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="address1" class="form-label">Address 1</label>
