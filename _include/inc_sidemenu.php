@@ -59,17 +59,17 @@
         </div>
     </li>
    
-    <li class="nav-item nav-category">Pages</li>
+    <li class="nav-item nav-category">Content</li>
     <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" role="button" aria-expanded="false" aria-controls="general-pages">
             <i class="link-icon" data-feather="book"></i>
-            <span class="link-title">Special pages</span>
+            <span class="link-title">Website Pages</span>
             <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
         <div class="collapse" id="general-pages">
             <ul class="nav sub-menu">
                 <li class="nav-item">
-                    <a href="pages/general/blank-page.html" class="nav-link">Blank page</a>
+                    <a href="wp_contact.php" class="nav-link">Contact page</a>
                 </li>
                 <li class="nav-item">
                     <a href="pages/general/faq.html" class="nav-link">Faq</a>
@@ -90,5 +90,7 @@
         </div>
     </li>
     <li class="nav-item nav-category"><a href="mailto:sai@livewd.ca">Help</a></li>
-
+    <?php if($user->hasPermission("admin")){?>
+    <li class="nav-item nav-category"><a href="mailto:sai@livewd.ca">Help</a></li>
+    <?php } ?>
 </ul>
