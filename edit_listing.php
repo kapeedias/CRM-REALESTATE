@@ -6,35 +6,6 @@ if (!$user->isLoggedIn()) {
   Redirect::to('login.php');
   die();
 }
-
-
-
-// Replace these variables with your database credentials
-$servername = "localhost";
-$username = "cms_admin";
-$password = "cQ&cH_k)Xybr";
-$dbname = "cms_livewd";
-
-try {
-  // Create a PDO connection
-  $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-
-  // Set the PDO error mode to exception
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-  // Your SQL query
-  $sql = "SELECT * FROM listings WHERE status <> 'SOLD'";
-
-  // Prepare and execute the query
-  $stmt = $pdo->prepare($sql);
-  $stmt->execute();
-
-  // Fetch all rows as an associative array
-  $listings = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-  echo "Connection failed: " . $e->getMessage();
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -140,70 +111,41 @@ try {
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
           <div>
-            <h4 class="mb-3 mb-md-0">View Active Listings</h4>
+            <h4 class="mb-3 mb-md-0">Welcome <?php echo $user->data()->first_name; ?></h4>
           </div>
+
+
+
+
         </div>
-        <?php if (!empty($listings)) : ?>
-          <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title">Active Listings</h6>
-                  <div class="table-responsive">
-                    <table id="dataTableExample" class="table">
-                      <thead>
-                        <tr>
-                          <th>MLS</th>
-                          <th>Price</th>
-                          <th>Status</th>
-                          <th>Address</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php foreach ($listings as $listing) : ?>
-                          <tr>
-                            <td><?php echo $listing['mlsid']; ?></td>
-                            <td>$ <?php echo $listing['price']; ?></td>
-                            <td><?php echo $listing['status']; ?></td>
-                            <td><?php echo $listing['address1']; ?></td>
-                            <td><a href="<?php echo $listing['property_url']; ?>" target="_blank"><i data-feather="external-link"></i></a>&nbsp;&nbsp;,<a href="edit_listing.php?id=<?php echo $listing['id']; ?>"><i data-feather="edit-2"></i></a></td>
-                          </tr>
-                        <?php endforeach; ?>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <?php else : ?>
-          <p>No listings found.</p>
-        <?php endif; ?>
-        <!-- Footer Start -->
-        <?php include('_include/inc_footer.php'); ?>
-        <!-- Footer End -->
+
 
       </div>
+
+      <!-- Footer Start -->
+      <?php include('_include/inc_footer.php'); ?>
+      <!-- Footer End -->
+
     </div>
+  </div>
 
-    <!-- core:js -->
-    <script src="assets/vendors/core/core.js"></script>
-    <!-- endinject -->
+  <!-- core:js -->
+  <script src="assets/vendors/core/core.js"></script>
+  <!-- endinject -->
 
-    <!-- Plugin js for this page -->
-    <script src="assets/vendors/flatpickr/flatpickr.min.js"></script>
-    <script src="assets/vendors/apexcharts/apexcharts.min.js"></script>
-    <!-- End plugin js for this page -->
+  <!-- Plugin js for this page -->
+  <script src="assets/vendors/flatpickr/flatpickr.min.js"></script>
+  <script src="assets/vendors/apexcharts/apexcharts.min.js"></script>
+  <!-- End plugin js for this page -->
 
-    <!-- inject:js -->
-    <script src="assets/vendors/feather-icons/feather.min.js"></script>
-    <script src="assets/js/template.js"></script>
-    <!-- endinject -->
+  <!-- inject:js -->
+  <script src="assets/vendors/feather-icons/feather.min.js"></script>
+  <script src="assets/js/template.js"></script>
+  <!-- endinject -->
 
-    <!-- Custom js for this page -->
-    <script src="assets/js/dashboard-light.js"></script>
-    <!-- End custom js for this page -->
+  <!-- Custom js for this page -->
+  <script src="assets/js/dashboard-light.js"></script>
+  <!-- End custom js for this page -->
 
 </body>
 
