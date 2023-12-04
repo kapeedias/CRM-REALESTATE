@@ -1,5 +1,6 @@
 <?php
 require_once 'core/init.php';
+require_once 'classes/Listings.php';
 
 $user = new User();
 if (!$user->isLoggedIn()) {
