@@ -159,18 +159,16 @@ try {
                           <th>Status</th>
                           <th>Address</th>
                           <th>Action</th>
-
                         </tr>
                       </thead>
                       <tbody>
                         <?php foreach ($listings as $listing) : ?>
                           <tr>
                             <td><?php echo $listing['mlsid']; ?></td>
-                            <td><?php echo $listing['price']; ?></td>
+                            <td>$ <?php echo $listing['price']; ?></td>
                             <td><?php echo $listing['status']; ?></td>
                             <td><?php echo $listing['address1']; ?></td>
-                            <td>Edit</td>
-
+                            <td><i class="fa-solid fa-link"></i> Edit</td>
                           </tr>
                         <?php endforeach; ?>
                       </tbody>
