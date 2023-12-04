@@ -20,7 +20,7 @@
     </li>
     <li class="nav-item">
         <a href="view_inactive_listings.php" class="nav-link">
-            <i class="link-icon" data-feather="triangle"></i>
+            <i class="link-icon" data-feather="chevron-right"></i>
             <span class="link-title">View Inactive Listings</span>
         </a>
     </li>
