@@ -44,6 +44,27 @@ if (isset($_POST["doAdd"]) == 'Add') {
         $updated_on = Date('Y-m-d H:i:s');
         $status = $_POST['status'];
 
+
+        $targetDir = "uploads/";
+
+        // Check if the directory doesn't exist, then create it
+        if (!is_dir($targetDir)) {
+            // The third parameter (true) specifies recursive creation, creating all necessary directories
+            mkdir($targetDir, 0777, true);
+
+            // Check if the directory was created successfully
+            if (is_dir($targetDir)) {
+                echo "Directory '$targetDir' created successfully.";
+            } else {
+                echo "Failed to create directory '$targetDir'.";
+            }
+        } else {
+            echo "Directory '$targetDir' already exists.";
+        }
+
+
+
+
         // Your SQL insert query with mlsid and created_ columns
         $sql = "INSERT INTO listings (mlsid, price, address1, property_description, sqft, property_url, created_by, created_on, status)
 VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by, :created_on, :status)";
@@ -183,65 +204,65 @@ VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, 
             }
             ?>
 
-           
-                <div class="page-content">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
-                            <div>
-                                <h4 class="mb-3 mb-md-0">ADD MLS ID</h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h6 class="card-title">ADD NEW MLS ID</h6>
-                                        <form class="forms-listing" method="POST" action="">
-                                            <div class="mb-3">
-                                                <label for="mlsid" class="form-label">MLS ID</label>
-                                                <input type="text" class="form-control text-danger" name="mlsid" id="mlsid" placeholder="R123123" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="price" class="form-label">Price</label>
-                                                <input type="text" class="form-control text-danger" name="price" id="price" value="<?php echo $listing['price']; ?>" placeholder="619,000" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="address1" class="form-label">Address 1</label>
-                                                <input type="text" class="form-control text-danger" id="address1" name="address1" value="<?php echo $listing['address1']; ?>" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="address2" class="form-label">Address 2</label>
-                                                <input type="text" class="form-control text-danger" id="address2" name="address2" value="<?php echo $listing['address2']; ?>">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="description" class="form-label">Description</label>
-                                                <textarea class="form-control text-danger" id="description" name="description" row="3" required><?php echo $listing['property_description']; ?></textarea>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="sqft" class="form-label">Area / Sq.Ft</label>
-                                                <input type="text" class="form-control text-danger" id="sqft" name="sqft" value="<?php echo $listing['sqft']; ?>">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="property_url" class="form-label"><a href="<?php echo $listing['property_url']; ?>" target="_blank">Property URL</a></label>
-                                                <input type="text" class="form-control text-danger" id="property_url" name="property_url" value="<?php echo $listing['property_url']; ?>">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="status" class="form-label">Status</label>
-                                                <select name="status" id="status" class="form-control text-danger">
-                                                    <option value="ACTIVE">Active</option>
-                                                    <option value="SOLD">Sold</option>
-                                                    <option value="DELETED">Deleted</option>
-                                                    <option value="INACTIVE">Inactive</option>
-                                                </select>
-                                            </div>
-                                            <input type="submit" name="doAdd" id="doAdd" value="Add" class="btn btn-success" />
 
-                                        </form>
+            <div class="page-content">
+                <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+                    <div>
+                        <h4 class="mb-3 mb-md-0">ADD MLS ID</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">ADD NEW MLS ID</h6>
+                                <form class="forms-listing" method="POST" action="">
+                                    <div class="mb-3">
+                                        <label for="mlsid" class="form-label">MLS ID</label>
+                                        <input type="text" class="form-control text-danger" name="mlsid" id="mlsid" placeholder="R123123" required>
                                     </div>
-                                </div>
+                                    <div class="mb-3">
+                                        <label for="price" class="form-label">Price</label>
+                                        <input type="text" class="form-control text-danger" name="price" id="price" value="<?php echo $listing['price']; ?>" placeholder="619,000" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address1" class="form-label">Address 1</label>
+                                        <input type="text" class="form-control text-danger" id="address1" name="address1" value="<?php echo $listing['address1']; ?>" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address2" class="form-label">Address 2</label>
+                                        <input type="text" class="form-control text-danger" id="address2" name="address2" value="<?php echo $listing['address2']; ?>">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="description" class="form-label">Description</label>
+                                        <textarea class="form-control text-danger" id="description" name="description" row="3" required><?php echo $listing['property_description']; ?></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="sqft" class="form-label">Area / Sq.Ft</label>
+                                        <input type="text" class="form-control text-danger" id="sqft" name="sqft" value="<?php echo $listing['sqft']; ?>">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="property_url" class="form-label"><a href="<?php echo $listing['property_url']; ?>" target="_blank">Property URL</a></label>
+                                        <input type="text" class="form-control text-danger" id="property_url" name="property_url" value="<?php echo $listing['property_url']; ?>">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="status" class="form-label">Status</label>
+                                        <select name="status" id="status" class="form-control text-danger">
+                                            <option value="ACTIVE">Active</option>
+                                            <option value="SOLD">Sold</option>
+                                            <option value="DELETED">Deleted</option>
+                                            <option value="INACTIVE">Inactive</option>
+                                        </select>
+                                    </div>
+                                    <input type="submit" name="doAdd" id="doAdd" value="Add" class="btn btn-success" />
+
+                                </form>
                             </div>
                         </div>
+                    </div>
                 </div>
-           
+            </div>
+
             <!-- Footer Start -->
             <?php include('_include/inc_footer.php'); ?>
             <!-- Footer End -->
