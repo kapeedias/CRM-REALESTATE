@@ -34,7 +34,7 @@ class User
             throw new Exception('There was a problem updating user profile');
         }
     }
-
+/*
     public function hasPermission($key){
         $group = $this->_db->get('groups', array('id','=', $this->data()->group));
         if($group->count()){
@@ -45,7 +45,7 @@ class User
         }
         return false;
     }
-
+*/
     public function create($fields = array())
     {
         if ($this->_db->insert('crm_users', $fields)) {
