@@ -79,8 +79,12 @@ if (isset($_POST["doAdd"]) == 'Add') {
         $stmt->bindParam(':created_on', $created_on); // Change updated_on to created_on
         $stmt->bindParam(':status', $status);
         $stmt->execute();
+
+        // Get the last inserted ID
+        $lastInsertedId = $pdo->lastInsertId();
+
         $msg[] = "Added new listing successful!";
-        header("Location: view_active_listings.php");
+        header("Location: edit_listings.php?id=$lastInsertedId");
     } else {
         // Output errors
         foreach ($err as $error) {
