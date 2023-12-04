@@ -52,8 +52,8 @@ if (isset($_POST["doAdd"]) == 'Add') {
         $property_description = $_POST['description'];
         $sqft = $_POST['sqft'];
         $property_url = $_POST['property_url'];
-        $updated_by = $user->data()->username;
-        $updated_on = Date('Y-m-d H:i:s');
+        $created_by = $user->data()->username;
+        $created_on = Date('Y-m-d H:i:s');
         $status = $_POST['status'];
 
 
