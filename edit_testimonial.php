@@ -71,9 +71,9 @@ if (isset($_POST["doUpdate"]) == 'Update') {
             $stmt->bindParam(':testimonial_text', $testimonial_text);
             $stmt->bindParam(':id', $id);
             $stmt->execute();
-            
+
                 $msg[] = "Testimonial added successfully!";
-                header("Location: edit_testimonial.php?id=$lastInsertedId");
+                header("Location: edit_testimonial.php?id=$id");
                 exit(); // Important to exit after redirection
            
         } catch (PDOException $e) {
