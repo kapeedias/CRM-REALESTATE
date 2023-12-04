@@ -78,7 +78,7 @@ if (isset($_POST["doAdd"]) == 'Add') {
           
         // Your SQL insert query with mlsid and created_ columns
         $sql = "INSERT INTO listings (mlsid, price, address1, property_description, sqft, property_url, created_by, status)
-        VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by, :status)";
+        VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by, :statuss)";
 
         // Prepare and execute the query
         $stmt = $pdo->prepare($sql);
@@ -90,7 +90,7 @@ if (isset($_POST["doAdd"]) == 'Add') {
         $stmt->bindParam(':property_url', $property_url);
         $stmt->bindParam(':created_by', $created_by); // Change updated_by to created_by
         //$stmt->bindParam(':created_on', $created_on); // Change updated_on to created_on
-        $stmt->bindParam(':status', $status);
+        $stmt->bindParam(':statuss', $status);
         $stmt->execute();
 
         // Get the last inserted ID
