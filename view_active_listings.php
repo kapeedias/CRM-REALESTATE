@@ -7,15 +7,34 @@ if (!$user->isLoggedIn()) {
   die();
 }
 
-$sql = "SELECT * FROM listings WHERE status <> 'SOLD'";
 
-// Prepare and execute the query
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
 
-// Fetch all rows as an associative array
-$listings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Replace these variables with your database credentials
+$servername = "localhost";
+$username = "cms_admin";
+$password = "cQ&cH_k)Xybr";
+$dbname = "cms_livewd";
 
+try {
+    // Create a PDO connection
+    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    
+    // Set the PDO error mode to exception
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Your SQL query
+    $sql = "SELECT * FROM listings WHERE status <> 'SOLD'";
+    
+    // Prepare and execute the query
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    
+    // Fetch all rows as an associative array
+    $listings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
 
 ?>
 
