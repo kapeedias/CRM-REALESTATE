@@ -1,6 +1,8 @@
 <?php
 require_once 'core/init.php';
 require_once 'classes/Listings.php';
+$err = array();
+$msg = array();
 
 $user = new User();
 if (!$user->isLoggedIn()) {
@@ -38,7 +40,63 @@ try {
 
 
 if(isset($_POST["doUpdate"]) == 'Update') {
-    echo "updated";
+    
+
+    if(empty($_POST['lid'])) {
+        $err[] = "Listing cannot be blank";
+    }
+    if(empty($_POST['price'])) {
+        $err[] = "Price cannot be blank";
+    }
+    if(empty($_POST['address1'])) {
+        $err[] = "Address1 cannot be blank";
+    }
+    if(empty($_POST['property_description'])) {
+        $err[] = "Property Description cannot be blank";
+    }
+    if(empty($_POST['sqft'])) {
+        $err[] = "Area / SQFT cannot be blank";
+    }
+    if(empty($_POST['property_url'])) {
+        $err[] = "Property URL cannot be blank";
+    }
+    
+    // If there are no input errors, perform the update
+    if (empty($err)) {
+        $lid = $_POST['lid'];
+        $price = $_POST['price'];
+        $address1 = $_POST['address1'];
+        $property_description = $_POST['property_description'];
+        $sqft = $_POST['sqft'];
+        $property_url = $_POST['property_url'];
+
+        // Your SQL update query
+        $sql = "UPDATE listings SET 
+                price = :price,
+                address1 = :address1,
+                property_description = :property_description,
+                sqft = :sqft,
+                property_url = :property_url
+                WHERE id = :lid";
+
+        // Prepare and execute the query
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':lid', $lid);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':address1', $address1);
+        $stmt->bindParam(':property_description', $property_description);
+        $stmt->bindParam(':sqft', $sqft);
+        $stmt->bindParam(':property_url', $property_url);
+        $stmt->execute();
+
+        echo "Update successful!";
+    } else {
+        // Output errors
+        foreach ($err as $error) {
+            echo $error . "<br>";
+        }
+    }
+
 }
 
 
@@ -162,6 +220,7 @@ if(isset($_POST["doUpdate"]) == 'Update') {
                                         <form class="forms-listing" method="POST" action="">
                                             <div class="mb-3">
                                                 <label for="price" class="form-label">Price</label>
+                                                <input type="hidden" name="lid" id="lid" value="<?php echo $listing['id']; ?>">
                                                 <input type="text" class="form-control text-danger" name="price" id="price" value="<?php echo $listing['price']; ?>" placeholder="619,000" required>
                                             </div>
                                             <div class="mb-3">
