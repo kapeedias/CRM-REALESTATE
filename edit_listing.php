@@ -37,6 +37,11 @@ try {
 }
 
 
+if(isset($_POST["doUpdate"]) == 'Update') {
+    echo "updated";
+}
+
+
 
 ?>
 
