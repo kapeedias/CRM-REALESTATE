@@ -161,29 +161,34 @@ try {
                                             </div>
                                             <div class="mb-3">
                                                 <label for="address1" class="form-label">Address 1</label>
-                                                <input type="text" class="form-control" id="address1" name="address1" value="<?php echo $listing['address1']; ?>"  required>
+                                                <input type="text" class="form-control text-danger" id="address1" name="address1" value="<?php echo $listing['address1']; ?>" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="address2" class="form-label">Address 2</label>
-                                                <input type="text" class="form-control" id="address2" name="address2" value="<?php echo $listing['address2']; ?>">
+                                                <input type="text" class="form-control text-danger" id="address2" name="address2" value="<?php echo $listing['address2']; ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="description" class="form-label">Description</label>
-                                                <textarea class="form-control" id="description" name="description" row="3"  required><?php echo $listing['property_description']; ?></textarea>
+                                                <textarea class="form-control text-danger" id="description" name="description" row="3" required><?php echo $listing['property_description']; ?></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="sqft" class="form-label">Area / Sq.Ft</label>
-                                                <input type="text" class="form-control" id="sqft" name="sqft" value="<?php echo $listing['sqft']; ?>">
+                                                <input type="text" class="form-control text-danger" id="sqft" name="sqft" value="<?php echo $listing['sqft']; ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="property_url" class="form-label">Property URL</label>
-                                                <input type="text" class="form-control" id="property_url" name="property_url" value="<?php echo $listing['property_url']; ?>">
+                                                <input type="text" class="form-control text-danger" id="property_url" name="property_url" value="<?php echo $listing['property_url']; ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="status" class="form-label">Status</label>
-                                                <textarea class="form-control" id="description" name="description" row="3"  required><?php echo $listing['property_description']; ?></textarea>
+                                                <select name="status" id="status" class="form-control text-danger">
+                                                    <option value="ACTIVE" <?php if($listing['status'] =='ACTIVE'){ echo "selected"; } ?> >Active</option>
+                                                    <option value="SOLD" <?php if($listing['status'] =='SOLD'){ echo "selected"; } ?> >Sold</option>
+                                                    <option value="DELETED"  <?php if($listing['status'] =='DELETED'){ echo "selected"; } ?> >Deleted</option>
+                                                    <option value="INACTIVE"  <?php if($listing['status'] =='INACTIVE'){ echo "selected"; } ?> >Inactive</option>
+                                                </select>
                                             </div>
-                                           
+
                                             <button type="submit" class="btn btn-primary me-2">Submit</button>
                                             <button class="btn btn-secondary">Cancel</button>
                                         </form>
