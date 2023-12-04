@@ -70,7 +70,7 @@
                     <a href="add_testimonial.php" class="nav-link">Add Testimonial</a>
                 </li>
                 <li class="nav-item">
-                    <a href="view_testimonial.php" class="nav-link">View / Manage Testimonial</a>
+                    <a href="view_testimonials.php" class="nav-link">View / Manage Testimonial</a>
                 </li>
             </ul>
         </div>
