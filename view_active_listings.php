@@ -168,7 +168,7 @@ try {
                             <td>$ <?php echo $listing['price']; ?></td>
                             <td><?php echo $listing['status']; ?></td>
                             <td><?php echo $listing['address1']; ?></td>
-                            <td><i class="fa-solid fa-link"></i> Edit</td>
+                            <td><i data-feather="external-link"></i> Edit</td>
                           </tr>
                         <?php endforeach; ?>
                       </tbody>
