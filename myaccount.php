@@ -111,12 +111,12 @@ if (!$user->isLoggedIn()) {
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
           <div>
-            <h4 class="mb-3 mb-md-0">Welcome to <?php echo $user->data()->first_name; ?></h4>
+            <h4 class="mb-3 mb-md-0">Welcome <?php echo $user->data()->first_name; ?></h4>
           </div>
 
 
 
-          
+
         </div>
 
 
