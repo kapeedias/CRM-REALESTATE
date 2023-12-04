@@ -66,7 +66,7 @@ if(isset($_POST["doUpdate"]) == 'Update') {
         $lid = $_POST['lid'];
         $price = $_POST['price'];
         $address1 = $_POST['address1'];
-        $property_description = $_POST['property_description'];
+        $property_description = $_POST['description'];
         $sqft = $_POST['sqft'];
         $property_url = $_POST['property_url'];
 
