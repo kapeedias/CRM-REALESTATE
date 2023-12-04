@@ -1,6 +1,11 @@
 <?php
 require_once 'core/init.php';
 require_once 'classes/Listings.php';
+
+$publicHtmlPath = dirname(__DIR__);
+$mls_img_upload = $publicHtmlPath."/assets/img/mls";
+
+
 $err = array();
 $msg = array();
 
@@ -45,21 +50,21 @@ if (isset($_POST["doAdd"]) == 'Add') {
         $status = $_POST['status'];
 
 
-        $targetDir = "uploads/";
+        $mls_listing_folder = $mls_img_upload."/".$mlsid;
 
         // Check if the directory doesn't exist, then create it
-        if (!is_dir($targetDir)) {
+        if (!is_dir($mls_listing_folder)) {
             // The third parameter (true) specifies recursive creation, creating all necessary directories
-            mkdir($targetDir, 0777, true);
+            mkdir($mls_listing_folder, 0777, true);
 
             // Check if the directory was created successfully
-            if (is_dir($targetDir)) {
-                echo "Directory '$targetDir' created successfully.";
+            if (is_dir($mls_listing_folder)) {
+                echo "Directory '$mls_listing_folder' created successfully.";
             } else {
-                echo "Failed to create directory '$targetDir'.";
+                echo "Failed to create directory '$mls_listing_folder'.";
             }
         } else {
-            echo "Directory '$targetDir' already exists.";
+            echo "Directory '$mls_listing_folder' already exists.";
         }
 
 

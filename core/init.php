@@ -37,3 +37,6 @@ if(Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Confi
         $user->login();
     }
 }
+
+$publicHtmlPath = dirname(__DIR__);
+$mls_img_upload = $publicHtmlPath."/assets/img/mls";
