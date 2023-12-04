@@ -99,6 +99,7 @@ if(isset($_POST["doUpdate"]) == 'Update') {
         $stmt->execute();
 
         $msg[]= "Update successful!";
+        header("Location: {$_SERVER['PHP_SELF']}");
     } else {
         // Output errors
         foreach ($err as $error) {
