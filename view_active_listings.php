@@ -9,12 +9,6 @@ if (!$user->isLoggedIn()) {
 
 
 
-// Replace these variables with your database credentials
-$servername = "localhost";
-$username = "cms_admin";
-$password = "cQ&cH_k)Xybr";
-$dbname = "cms_livewd";
-
 try {
   // Create a PDO connection
   $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

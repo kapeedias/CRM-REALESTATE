@@ -43,6 +43,9 @@ if (isset($_POST["doAdd"]) == 'Add') {
     if (empty($_POST['property_url'])) {
         $err[] = "Property URL cannot be blank";
     }
+    if (empty($_FILES['property_image']['name'])) {
+        $err[] = 'Property Image cannot be empty.';
+    }
 
     // If there are no input errors, perform the update
     if (empty($err)) {
@@ -246,8 +249,8 @@ if (isset($_POST["doAdd"]) == 'Add') {
                                         <input type="text" class="form-control text-danger" id="address1" name="address1" " required>
                                     </div>
                                     <div class=" mb-3">
-                                        <label for="address2" class="form-label">Address 2</label>
-                                        <input type="text" class="form-control text-danger" id="address2" name="address2" ">
+                                        <label for="property_image" class="form-label">Property Image</label>
+                                        <input type="file" class="form-control text-danger" id="property_image" name="property_image" required>
                                     </div>
                                     <div class=" mb-3">
                                         <label for="description" class="form-label">Description</label>
