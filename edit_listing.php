@@ -260,7 +260,7 @@ if(isset($_POST["doUpdate"]) == 'Update') {
                                                 <input type="text" class="form-control text-danger" id="sqft" name="sqft" value="<?php echo $listing['sqft']; ?>">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="property_url" class="form-label">Property URL</label>
+                                                <label for="property_url" class="form-label"><a href="<?php echo $listing['property_url']; ?>" target="_blank">Property URL</a></label>
                                                 <input type="text" class="form-control text-danger" id="property_url" name="property_url" value="<?php echo $listing['property_url']; ?>">
                                             </div>
                                             <div class="mb-3">
