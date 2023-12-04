@@ -62,9 +62,7 @@ if (isset($_POST["doUpdate"]) == 'Update') {
             // Set the PDO error mode to exception
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $sql = "UPDATE testimonials 
-                SET testimonial = :testimonial_text,customer = :uname
-                WHERE id = :id";
+            $sql = "UPDATE testimonials SET testimonial = :testimonial_text, customer = :uname WHERE id = :id";
 
 
             // Prepare and execute the query
@@ -73,18 +71,11 @@ if (isset($_POST["doUpdate"]) == 'Update') {
             $stmt->bindParam(':testimonial_text', $testimonial_text);
             $stmt->bindParam(':id', $id);
             $stmt->execute();
-
-            // Get the last inserted ID
-            $lastInsertedId = $pdo->lastInsertId();
-
-            // Check if the insertion was successful
-            if ($lastInsertedId) {
+            
                 $msg[] = "Testimonial added successfully!";
                 header("Location: edit_testimonial.php?id=$lastInsertedId");
                 exit(); // Important to exit after redirection
-            } else {
-                echo "Error";
-            }
+           
         } catch (PDOException $e) {
             echo '' . $e->getMessage();
         }
