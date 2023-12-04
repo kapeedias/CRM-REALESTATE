@@ -113,8 +113,8 @@ if (!$user->isLoggedIn()) {
           <div>
             <h4 class="mb-3 mb-md-0">Welcome <?php echo $user->data()->first_name; ?></h4>
           </div>
-
-          <div class="row">
+        </div>
+        <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -320,10 +320,6 @@ if (!$user->isLoggedIn()) {
 
 
           </div>
-
-
-        </div>
-
         <!-- Footer Start -->
         <?php include('_include/inc_footer.php'); ?>
         <!-- Footer End -->
