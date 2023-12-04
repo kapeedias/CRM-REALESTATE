@@ -165,7 +165,7 @@ if (isset($_POST["doAdd"]) && $_POST["doAdd"] == 'Add') {
         $status = $_POST['status'];
 
         $mls_listing_folder = $mls_img_upload . "/" . $mlsid;
-        echo $file_type = $_FILES['property_image']['type'];
+        
         // Check if the directory doesn't exist, then create it
         if (!is_dir($mls_listing_folder)) {
             // The third parameter (true) specifies recursive creation, creating all necessary directories
@@ -175,7 +175,7 @@ if (isset($_POST["doAdd"]) && $_POST["doAdd"] == 'Add') {
         // File upload handling
         $file_name = $_FILES['property_image']['name'];
         $file_tmp = $_FILES['property_image']['tmp_name'];
-        $file_type = $_FILES['property_image']['type'];
+        echo $file_type = $_FILES['property_image']['type'];
 
         // Validate file type to allow images and videos only
         $allowed_types = array('image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/mpeg', 'video/quicktime');
