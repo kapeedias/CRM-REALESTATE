@@ -87,13 +87,17 @@ if (isset($_POST["doUpdate"]) == 'Update') {
         $file_tmp = $_FILES['property_image']['tmp_name'];
         $file_type = $_FILES['property_image']['type'];
 
-        $destination_path = $mls_listing_folder . '/' . $file_name;
-        move_uploaded_file($file_tmp, $destination_path);
-        $file_url = 'https://gobeyondrealestate.com/assets/img/mls/' . $mlsid . '/' . $file_name;
+       
+
+        if (!empty($file_name = $_FILES['property_image']['name'])) {
+
+            $destination_path = $mls_listing_folder . '/' . $file_name;
+            move_uploaded_file($file_tmp, $destination_path);
+            $file_url = 'https://gobeyondrealestate.com/assets/img/mls/' . $mlsid . '/' . $file_name;
 
 
-        // Your SQL update query
-        $sql = "UPDATE listings SET 
+            // Your SQL update query
+            $sql = "UPDATE listings SET 
                 price = :price,
                 address1 = :address1,
                 property_description = :property_description,
@@ -107,31 +111,62 @@ if (isset($_POST["doUpdate"]) == 'Update') {
                 status = :status
                 WHERE id = :lid";
 
-        // Prepare and execute the query
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':lid', $lid);
-        $stmt->bindParam(':price', $price);
-        $stmt->bindParam(':address1', $address1);
-        $stmt->bindParam(':property_description', $property_description);
-        $stmt->bindParam(':sqft', $sqft);
-        $stmt->bindParam(':property_url', $property_url);
-        $stmt->bindParam(':property_image', $file_url);
-        $stmt->bindParam(':updated_by', $updated_by);
-        $stmt->bindParam(':updated_on', $updated_on);
-        $stmt->bindParam(':beds', $beds);
-        $stmt->bindParam(':bath', $bath);
-        $stmt->bindParam(':status', $status);
-        $stmt->execute();
+            // Prepare and execute the query
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':lid', $lid);
+            $stmt->bindParam(':price', $price);
+            $stmt->bindParam(':address1', $address1);
+            $stmt->bindParam(':property_description', $property_description);
+            $stmt->bindParam(':sqft', $sqft);
+            $stmt->bindParam(':property_url', $property_url);
+            $stmt->bindParam(':property_image', $file_url);
+            $stmt->bindParam(':updated_by', $updated_by);
+            $stmt->bindParam(':updated_on', $updated_on);
+            $stmt->bindParam(':beds', $beds);
+            $stmt->bindParam(':bath', $bath);
+            $stmt->bindParam(':status', $status);
+            $stmt->execute();
 
-        $current_img_path = $mls_listing_folder . '/' . basename($current_image);
+            $current_img_path = $mls_listing_folder . '/' . basename($current_image);
 
 
-        if (file_exists($current_img_path)) {
-            // Attempt to delete the file
-            if (unlink($current_img_path)) {
-                //
+            if (file_exists($current_img_path)) {
+                // Attempt to delete the file
+                if (unlink($current_img_path)) {
+                    //
+                }
             }
-        } 
+        } else {
+
+            // Your SQL update query
+            $sql = "UPDATE listings SET 
+                    price = :price,
+                    address1 = :address1,
+                    property_description = :property_description,
+                    sqft = :sqft,
+                    property_url = :property_url,
+                    updated_by = :updated_by,
+                    updated_on = :updated_on,
+                    beds = :beds,
+                    bath = :bath,
+                    status = :status
+                    WHERE id = :lid";
+
+            // Prepare and execute the query
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':lid', $lid);
+            $stmt->bindParam(':price', $price);
+            $stmt->bindParam(':address1', $address1);
+            $stmt->bindParam(':property_description', $property_description);
+            $stmt->bindParam(':sqft', $sqft);
+            $stmt->bindParam(':property_url', $property_url);
+            $stmt->bindParam(':updated_by', $updated_by);
+            $stmt->bindParam(':updated_on', $updated_on);
+            $stmt->bindParam(':beds', $beds);
+            $stmt->bindParam(':bath', $bath);
+            $stmt->bindParam(':status', $status);
+            $stmt->execute();
+        }
 
         $msg[] = "Update successful!";
         header("Location: edit_listing.php?id=$lid");
@@ -287,7 +322,7 @@ if (isset($_POST["doUpdate"]) == 'Update') {
                                             </div>
                                             <div class=" mb-3">
                                                 <label for="property_image" class="form-label">Property Image</label>
-                                                <input type="file" class="form-control" name="property_image" id="property_image" accept="image/*" required>
+                                                <input type="file" class="form-control" name="property_image" id="property_image" accept="image/*">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="sqft" class="form-label">Area / Sq.Ft</label>
