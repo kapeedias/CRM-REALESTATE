@@ -8,7 +8,7 @@
     </li>
     <li class="nav-item nav-category">Manual Listings</li>
     <li class="nav-item">
-        <a href="add_new_listing.php" class="nav-link">
+        <a href="add_listing.php" class="nav-link">
         <i class="link-icon" data-feather="chevron-right"></i>
             <span class="link-title">Add New Listing</span>
         </a>
