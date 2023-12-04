@@ -71,7 +71,7 @@ if (isset($_POST["doUpdate"]) == 'Update') {
         $updated_on = Date('Y-m-d H:i:s');
         $status = $_POST['status'];
         $mlsid = $_POST['mlsid'];
-        $current_image = $_POST['current_image'];
+        echo $current_image = $_POST['current_image'];
 
         $mls_listing_folder = $mls_img_upload . "/" . $mlsid;
 
@@ -117,8 +117,11 @@ if (isset($_POST["doUpdate"]) == 'Update') {
         $stmt->bindParam(':status', $status);
         $stmt->execute();
 
-        if (file_exists($current_image)) {  
-            unlink($current_image); 
+        if (file_exists($current_image)) {
+            // Attempt to delete the file
+            if (unlink($current_image)) {
+                echo 'File deleted successfully.';
+            } 
         }
 
         $msg[] = "Update successful!";
