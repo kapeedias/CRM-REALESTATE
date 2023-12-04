@@ -154,7 +154,7 @@ try {
 
                                         <h6 class="card-title">MLSID: <?php echo $listing['mlsid']; ?></h6>
 
-                                        <form class="forms-sample">
+                                        <form class="forms-listing" method="POST" action="">
                                             <div class="mb-3">
                                                 <label for="price" class="form-label">Price</label>
                                                 <input type="text" class="form-control text-danger" name="price" id="price" value="<?php echo $listing['price']; ?>" placeholder="619,000" required>
@@ -188,9 +188,8 @@ try {
                                                     <option value="INACTIVE"  <?php if($listing['status'] =='INACTIVE'){ echo "selected"; } ?> >Inactive</option>
                                                 </select>
                                             </div>
-
-                                            <button type="submit" class="btn btn-primary me-2">Submit</button>
-                                            <button class="btn btn-secondary">Cancel</button>
+                                            <input type="submit" name="doUpdate" id="doUpdate" value="Update" class="btn btn-success" />
+                                            
                                         </form>
                                     </div>
                                 </div>
