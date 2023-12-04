@@ -117,11 +117,16 @@ if (isset($_POST["doUpdate"]) == 'Update') {
         $stmt->bindParam(':status', $status);
         $stmt->execute();
 
-        if (file_exists($current_image)) {
+        $current_img_path = $mls_listing_folder.'/'. basename($current_image);
+        
+
+        if (file_exists($current_img_path)) {
             // Attempt to delete the file
-            if (unlink($current_image)) {
+            if (unlink($current_img_path)) {
                 echo 'File deleted successfully.';
             } 
+        }else{
+            echo "Errpr";
         }
 
         $msg[] = "Update successful!";
