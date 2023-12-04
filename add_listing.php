@@ -130,29 +130,29 @@ if (isset($_POST["doAdd"]) && $_POST["doAdd"] == 'Add') {
     if (empty($_POST['mlsid'])) {
         $err[] = "MLS ID cannot be blank";
     }
-    
+
     if (empty($_POST['price'])) {
         $err[] = "Price cannot be blank";
     }
-    
+
     if (empty($_POST['address1'])) {
         $err[] = "Address1 cannot be blank";
     }
-    
+
     if (empty($_POST['description'])) {
         $err[] = "Property Description cannot be blank";
     }
-    
+
     if (empty($_POST['sqft'])) {
         $err[] = "Area / SQFT cannot be blank";
     }
-    
+
     if (empty($_POST['property_url'])) {
         $err[] = "Property URL cannot be blank";
     }
-    
-    
-    
+
+
+
 
     if (empty($err)) {
         $mlsid = $_POST['mlsid'];
@@ -335,13 +335,7 @@ if (isset($_POST["doAdd"]) && $_POST["doAdd"] == 'Add') {
             </nav>
             <!-- Top Nav Bar End -->
 
-            <?php
 
-            foreach ($err as $error) {
-
-                echo '<div class="alert alert-success text-center" role="alert">' . $error . '</div>';
-            }
-            ?>
 
 
             <div class="page-content">
@@ -350,8 +344,16 @@ if (isset($_POST["doAdd"]) && $_POST["doAdd"] == 'Add') {
                         <h4 class="mb-3 mb-md-0">ADD MLS ID</h4>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-6">
+                        <?php
+
+                        foreach ($err as $error) {
+
+                            echo '<div class="alert alert-success text-center" role="alert">' . $error . '</div>';
+                        }
+                        ?>
                         <div class="card">
                             <div class="card-body">
                                 <h6 class="card-title">ADD NEW MLS ID</h6>
