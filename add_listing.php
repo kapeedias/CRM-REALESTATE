@@ -94,13 +94,13 @@ if (isset($_POST["doAdd"]) == 'Add') {
         $stmt->execute();
 
         // Get the last inserted ID
-        $lastInsertedId = $pdo->lastInsertId();
+        
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         } catch (PDOException $e) {
             echo ''. $e->getMessage();
         }
-            
+        $lastInsertedId = $pdo->lastInsertId();  
         $msg[] = "Added new listing successful!";
         header("Location: edit_listings.php?id=$lastInsertedId");
     } else {
