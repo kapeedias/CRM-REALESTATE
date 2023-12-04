@@ -97,7 +97,7 @@ if (isset($_POST["doAdd"]) == 'Add') {
             // Check if the insertion was successful
             if ($lastInsertedId) {
                 $msg[] = "Added new listing successfully!";
-                header("Location: edit_listings.php?id=$lastInsertedId");
+                header("Location: edit_listing.php?id=$lastInsertedId");
             } else {
                 echo "Error";
             }
