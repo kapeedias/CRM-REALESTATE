@@ -178,7 +178,7 @@ if (isset($_POST["doAdd"]) && $_POST["doAdd"] == 'Add') {
         $file_type = $_FILES['property_image']['type'];
 
         // Validate file type to allow images and videos only
-        $allowed_types = array('image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/mpeg', 'video/quicktime');
+        $allow_types=array("jpg","gif","png","jpeg");
         if (in_array($file_type, $allowed_types)) {
             // Move the uploaded file to the destination directory
             $destination_path = $mls_listing_folder . '/' . $file_name;
