@@ -9,8 +9,9 @@ if (!$user->isLoggedIn()) {
     Redirect::to('login.php');
     die();
 }
-
-$lid = $_GET['id'];
+if(isset($_GET['id'])){
+    $lid = $_GET['id'];
+}
 
 // Replace these variables with your database credentials
 $servername = "localhost";
