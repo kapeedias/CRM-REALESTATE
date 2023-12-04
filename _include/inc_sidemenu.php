@@ -15,7 +15,6 @@
     </li>
     <li class="nav-item">
         <a href="view_active_listings.php" class="nav-link">
-            <i class="link-icon" data-feather="message-square"></i>
             <span class="link-title">View Active Listings</span>
         </a>
     </li>
