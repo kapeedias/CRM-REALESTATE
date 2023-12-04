@@ -166,10 +166,10 @@ try {
                         <?php foreach ($listings as $listing) : ?>
                           <tr>
                             <td><?php echo $listing['mlsid']; ?></td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
+                            <td><?php echo $listing['price']; ?></td>
+                            <td><?php echo $listing['status']; ?></td>
+                            <td><?php echo $listing['address1']; ?></td>
+                            <td>Edit</td>
 
                           </tr>
                         <?php endforeach; ?>
