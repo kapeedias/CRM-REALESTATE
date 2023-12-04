@@ -173,7 +173,7 @@ if (isset($_POST["doAdd"]) && $_POST["doAdd"] == 'Add') {
         }
 
         // File upload handling
-        $file_name = $_FILES['property_image']['name'];
+        $file_name = $_POST['property_image']['name'];
         $file_tmp = $_FILES['property_image']['tmp_name'];
         echo $file_type = $_FILES['property_image']['type'];
 
@@ -357,7 +357,7 @@ if (isset($_POST["doAdd"]) && $_POST["doAdd"] == 'Add') {
                         <div class="card">
                             <div class="card-body">
                                 <h6 class="card-title">ADD NEW MLS ID</h6>
-                                <form class="forms-listing" method="POST" action="">
+                                <form class="forms-listing" method="POST" action="" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <label for="mlsid" class="form-label">MLS ID</label>
                                         <input type="text" class="form-control text-danger" name="mlsid" id="mlsid" placeholder="R123123" required>
