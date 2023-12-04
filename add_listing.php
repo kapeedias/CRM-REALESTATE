@@ -238,27 +238,27 @@ if (isset($_POST["doAdd"]) == 'Add') {
                                     </div>
                                     <div class="mb-3">
                                         <label for="price" class="form-label">Price</label>
-                                        <input type="text" class="form-control text-danger" name="price" id="price" value="<?php echo $listing['price']; ?>" placeholder="619,000" required>
+                                        <input type="text" class="form-control text-danger" name="price" id="price"  placeholder="619,000" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="address1" class="form-label">Address 1</label>
-                                        <input type="text" class="form-control text-danger" id="address1" name="address1" value="<?php echo $listing['address1']; ?>" required>
+                                        <input type="text" class="form-control text-danger" id="address1" name="address1" " required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="address2" class="form-label">Address 2</label>
-                                        <input type="text" class="form-control text-danger" id="address2" name="address2" value="<?php echo $listing['address2']; ?>">
+                                        <input type="text" class="form-control text-danger" id="address2" name="address2" ">
                                     </div>
                                     <div class="mb-3">
                                         <label for="description" class="form-label">Description</label>
-                                        <textarea class="form-control text-danger" id="description" name="description" row="3" required><?php echo $listing['property_description']; ?></textarea>
+                                        <textarea class="form-control text-danger" id="description" name="description" row="3" required></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="sqft" class="form-label">Area / Sq.Ft</label>
-                                        <input type="text" class="form-control text-danger" id="sqft" name="sqft" value="<?php echo $listing['sqft']; ?>">
+                                        <input type="text" class="form-control text-danger" id="sqft" name="sqft" >
                                     </div>
                                     <div class="mb-3">
-                                        <label for="property_url" class="form-label"><a href="<?php echo $listing['property_url']; ?>" target="_blank">Property URL</a></label>
-                                        <input type="text" class="form-control text-danger" id="property_url" name="property_url" value="<?php echo $listing['property_url']; ?>">
+                                        <label for="property_url" class="form-label">Property URL</label>
+                                        <input type="text" class="form-control text-danger" id="property_url" name="property_url" >
                                     </div>
                                     <div class="mb-3">
                                         <label for="status" class="form-label">Status</label>
