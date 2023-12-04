@@ -15,12 +15,7 @@ if (!$user->isLoggedIn()) {
     die();
 }
 
-// Replace these variables with your database credentials
-$servername = "localhost";
-$username = "cms_admin";
-$password = "cQ&cH_k)Xybr";
-$dbname = "cms_livewd";
-
+/*
 
 if (isset($_POST["doAdd"]) == 'Add') {
 
@@ -68,10 +63,25 @@ if (isset($_POST["doAdd"]) == 'Add') {
             mkdir($mls_listing_folder, 0777, true);
 
             // Check if the directory was created successfully
-            //if (is_dir($mls_listing_folder)) {
-            //    echo "Directory '$mls_listing_folder' created successfully.";
-            //} 
-        }
+            if (is_dir($mls_listing_folder)) {
+                $file_name = $_FILES['property_image']['name'];
+                $file_tmp = $_FILES['property_image']['tmp_name'];
+                $file_type = $_FILES['property_image']['type'];
+
+                // Validate file type to allow images and videos only
+                $allowed_types = array('image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/mpeg', 'video/quicktime');
+                if (in_array($file_type, $allowed_types)) {
+                    // Create the MLS listing folder if it doesn't exist
+
+
+                    // Move the uploaded file to the destination directory
+                    $destination_path = $mls_listing_folder . '/' . $file_name;
+                    move_uploaded_file($file_tmp, $destination_path);
+
+                    // Store the file URL in the database
+                    $file_url = 'https://gobeyondrealestate.com/assets/img/mls/' . $mlsid . '/' . $file_name;
+                        } 
+                }
         try {
             // Create a PDO connection
             $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -79,8 +89,8 @@ if (isset($_POST["doAdd"]) == 'Add') {
             // Set the PDO error mode to exception
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $sql = "INSERT INTO listings (mlsid, price, address1, property_description, sqft, property_url, created_by)
-            VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by)";
+            $sql = "INSERT INTO listings (mlsid, price, address1, property_description, sqft, property_url, created_by, property_image)
+            VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by,:property_image)";
 
             // Prepare and execute the query
             $stmt = $pdo->prepare($sql);
@@ -91,7 +101,7 @@ if (isset($_POST["doAdd"]) == 'Add') {
             $stmt->bindParam(':sqft', $sqft);
             $stmt->bindParam(':property_url', $property_url);
             $stmt->bindParam(':created_by', $created_by);
-           // $stmt->bindParam(':status', $status);
+            $stmt->bindParam(':property_image', $file_url);
             $stmt->execute();
 
             // Get the last inserted ID
@@ -114,6 +124,94 @@ if (isset($_POST["doAdd"]) == 'Add') {
         }
     }
 }
+
+*/
+if (isset($_POST["doAdd"]) && $_POST["doAdd"] == 'Add') {
+    if (empty($_POST['mlsid']) || empty($_POST['price']) || empty($_POST['address1']) || empty($_POST['description']) || empty($_POST['sqft']) || empty($_POST['property_url']) || empty($_FILES['property_image']['name'])) {
+        $err[] = "All fields, including MLS ID, price, address, description, area, property URL, and property image, are required.";
+    }
+
+    if (empty($err)) {
+        $mlsid = $_POST['mlsid'];
+        $price = $_POST['price'];
+        $address1 = $_POST['address1'];
+        $property_description = $_POST['description'];
+        $sqft = $_POST['sqft'];
+        $property_url = $_POST['property_url'];
+        $created_by = $user->data()->username;
+        $status = $_POST['status'];
+
+        $mls_listing_folder = $mls_img_upload . "/" . $mlsid;
+
+        // Check if the directory doesn't exist, then create it
+        if (!is_dir($mls_listing_folder)) {
+            // The third parameter (true) specifies recursive creation, creating all necessary directories
+            mkdir($mls_listing_folder, 0777, true);
+        }
+
+        // File upload handling
+        $file_name = $_FILES['property_image']['name'];
+        $file_tmp = $_FILES['property_image']['tmp_name'];
+        $file_type = $_FILES['property_image']['type'];
+
+        // Validate file type to allow images and videos only
+        $allowed_types = array('image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/mpeg', 'video/quicktime');
+        if (in_array($file_type, $allowed_types)) {
+            // Move the uploaded file to the destination directory
+            $destination_path = $mls_listing_folder . '/' . $file_name;
+            move_uploaded_file($file_tmp, $destination_path);
+
+            // Store the file URL in the database
+            $file_url = 'https://gobeyondrealestate.com/assets/img/mls/' . $mlsid . '/' . $file_name;
+
+            try {
+                // Create a PDO connection
+                $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+
+                // Set the PDO error mode to exception
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $sql = "INSERT INTO listings (mlsid, price, address1, property_description, sqft, property_url, created_by, status, property_image)
+                VALUES (:mlsid, :price, :address1, :property_description, :sqft, :property_url, :created_by, :status, :file_url)";
+
+                // Prepare and execute the query
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':mlsid', $mlsid);
+                $stmt->bindParam(':price', $price);
+                $stmt->bindParam(':address1', $address1);
+                $stmt->bindParam(':property_description', $property_description);
+                $stmt->bindParam(':sqft', $sqft);
+                $stmt->bindParam(':property_url', $property_url);
+                $stmt->bindParam(':created_by', $created_by);
+                $stmt->bindParam(':status', $status);
+                $stmt->bindParam(':file_url', $file_url);
+                $stmt->execute();
+
+                // Get the last inserted ID
+                $lastInsertedId = $pdo->lastInsertId();
+
+                // Check if the insertion was successful
+                if ($lastInsertedId) {
+                    $msg[] = "Added new listing successfully!";
+                    header("Location: edit_listing.php?id=$lastInsertedId");
+                    exit(); // Important to exit after redirection
+                } else {
+                    echo "Error";
+                }
+            } catch (PDOException $e) {
+                echo '' . $e->getMessage();
+            }
+        } else {
+            $err[] = "Invalid file type. Allowed types: image/jpeg, image/png, image/gif, video/mp4, video/mpeg, video/quicktime";
+        }
+    } else {
+        // Output errors
+        foreach ($err as $error) {
+            echo $error . "<br>";
+        }
+    }
+}
+?>
 ?>
 
 <!DOCTYPE html>
