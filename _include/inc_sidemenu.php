@@ -89,24 +89,6 @@
             </ul>
         </div>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#authPages" role="button" aria-expanded="false" aria-controls="authPages">
-            <i class="link-icon" data-feather="unlock"></i>
-            <span class="link-title">Authentication</span>
-            <i class="link-arrow" data-feather="chevron-down"></i>
-        </a>
-        <div class="collapse" id="authPages">
-            <ul class="nav sub-menu">
-                <li class="nav-item">
-                    <a href="pages/auth/login.html" class="nav-link">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/auth/register.html" class="nav-link">Register</a>
-                </li>
-            </ul>
-        </div>
-    </li>
-   
     <li class="nav-item nav-category"><a href="mailto:sai@livewd.ca">Help</a></li>
 
 </ul>
