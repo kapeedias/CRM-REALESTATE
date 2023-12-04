@@ -285,6 +285,7 @@ if (isset($_POST["doUpdate"]) == 'Update') {
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                <strong>Featured Image</strong>
                                     <img src="<?php echo $listing['property_image']; ?>" style="max-width: 500px;"/>
                             </div>
                         </div>
