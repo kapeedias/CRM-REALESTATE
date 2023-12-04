@@ -257,7 +257,7 @@ if (isset($_POST["doUpdate"]) == 'Update') {
 
                                         <h6 class="card-title">MLSID: <?php echo $listing['mlsid']; ?></h6>
 
-                                        <form class="forms-listing" method="POST" action="">
+                                        <form class="forms-listing" method="POST" action="" enctype="multipart/form-data">
                                             <div class="mb-3">
                                                 <label for="price" class="form-label">Price</label>
                                                 <input type="hidden" name="lid" id="lid" value="<?php echo $listing['id']; ?>">
