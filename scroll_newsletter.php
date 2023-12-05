@@ -170,7 +170,7 @@ try {
             </div>
           </div>
         <?php else : ?>
-          <p>No Testimonials found.</p>
+          <p>No Subscribers found.</p>
         <?php endif; ?>
         <!-- Footer Start -->
         <?php include('_include/inc_footer.php'); ?>
