@@ -1,21 +1,22 @@
 <?php
 require_once 'core/init.php';
 require_once 'classes/Listings.php';
-$err = array();
-$msg = array();
+
 
 $user = new User();
 if (!$user->isLoggedIn()) {
     Redirect::to('login.php');
     die();
 }
+
+
 if (isset($_GET['id'])) {
     $lid = $_GET['id'];
 }
 $publicHtmlPath = dirname(__DIR__);
 $mls_img_upload = $publicHtmlPath . "/assets/img/mls";
 
-
+/*
 try {
     // Create a PDO connection
     $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -87,7 +88,7 @@ if (isset($_POST["doUpdate"]) == 'Update') {
         $file_tmp = $_FILES['property_image']['tmp_name'];
         $file_type = $_FILES['property_image']['type'];
 
-       
+
 
         if (!empty($file_name = $_FILES['property_image']['name'])) {
 
@@ -177,7 +178,60 @@ if (isset($_POST["doUpdate"]) == 'Update') {
         }
     }
 }
+*/
 
+if (Input::exists()) {
+    if (Token::check(Input::get('token'))) {
+        $validate = new Validate();
+        $validation = $validate->check(
+            $_POST,
+            array(
+                'lid' => array('required' => true),
+                'price' => array('required' => true),
+                'address1' => array('required' => true),
+                'description' => array('required' => true),
+                'sqft' => array('required' => true),
+                'property_url' => array('required' => true)
+            )
+        );
+        if ($validation->passed()) {
+            $listing = new Listing();
+
+            //Image upload logic
+            $mls_listing_folder = $mls_img_upload . "/" . $mlsid;
+            if (!is_dir($mls_listing_folder)) {
+                mkdir($mls_listing_folder, 0777, true);
+            }
+            $file_name = $_FILES['property_image']['name'];
+            $file_tmp = $_FILES['property_image']['tmp_name'];
+            $file_type = $_FILES['property_image']['type'];
+            
+            if (!empty($file_name = $_FILES['property_image']['name'])) {
+                $destination_path = $mls_listing_folder . '/' . $file_name;
+                move_uploaded_file($file_tmp, $destination_path);
+                $file_url = 'https://gobeyondrealestate.com/assets/img/mls/' . $mlsid . '/' . $file_name;
+            }else{
+                $file_url = $current_image;
+            }
+    
+            try {
+                $listing->create(array(
+                    'id' => Input::get('lid'),
+                    'price' => Hash::make(Input::get('price'), $salt),
+                    'address1' => Input::get('address1'),
+                    'description' => Input::get('description'),
+                    'sqft' => Input::get('sqft'),
+                    'property_url' => Input::get('property_url'),
+                    'property_image' => $file_url,
+                ));
+                Session::flash('edit_listing', 'You are registered successfully. You can login now!');
+                Redirect::to('edit_listing.php?id=$lid');
+            } catch (Exception $e) {
+                Session::flash('Error', $e->getMessage() . '<br />');
+            }
+        }
+    }
+}
 
 
 ?>
@@ -224,7 +278,7 @@ if (isset($_POST["doUpdate"]) == 'Update') {
 <body>
     <div class="main-wrapper">
 
-        <!-- partial:partials/_sidebar.html -->
+        
         <nav class="sidebar">
             <div class="sidebar-header">
                 <a href="myaccount.php" class="sidebar-brand">
@@ -295,8 +349,8 @@ if (isset($_POST["doUpdate"]) == 'Update') {
                         <div class="row">
                             <div class="col-md-6">
                                 <?php
-                                foreach ($err as $error) {
-                                    echo '<div class="alert alert-success text-center" role="alert">' . $error . '</div>';
+                                if (Session::exists('edit_listing')) {
+                                    echo '<div class="alert alert-success text-center" role="alert">' . Session::flash('home') . '</div>';
                                 }
                                 ?>
                                 <div class="card">

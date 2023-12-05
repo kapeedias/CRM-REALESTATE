@@ -30,7 +30,6 @@ class Listing{
 
     public function find($listing = null)
     {
-
         if ($listing) {
             $field = (is_numeric($listing)) ? 'id' : 'mlsid';
             $data = $this->_db->get('listings', array($field, '=', $listing));
@@ -46,7 +45,7 @@ class Listing{
     public function create($fields = array())
     {
         if ($this->_db->insert('listings', $fields)) {
-            throw new Exception('There was a problem entering new listings');
+            throw new Exception('There was a problem creating a new listings');
         }
     }
 
