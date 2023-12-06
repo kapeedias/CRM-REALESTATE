@@ -50,7 +50,7 @@ class Listing
             $field = (is_numeric($id)) ? 'id' : 'mlsid';
             $listing_data = $this->_db->get('listings', array($field, '=', $id));
 
-            if ($listing_data->count()) {
+            if ($listing_data && $listing_data->count() > 0) {
                 return $listing_data->first(); // Assuming you are using a class that has a 'first' method to retrieve the first result
             }
         }
