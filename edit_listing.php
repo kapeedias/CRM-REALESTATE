@@ -16,7 +16,7 @@ $publicHtmlPath = dirname(__DIR__);
 $mls_img_upload = $publicHtmlPath . "/assets/img/mls";
 
 
-$listingsListz = $listingz->listingsView($lid);
+$listingsListz = $listingz->listingsView($lid,"");
 
 
 
