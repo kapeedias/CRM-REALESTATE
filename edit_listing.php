@@ -180,11 +180,14 @@ if (isset($_POST["doUpdate"]) == 'Update') {
 */
 
 
-$listingslist = $listing->find($lid);
-if (!empty($listingslist)) {
-    echo "record found";
+$listingslist = $listing->listingsView($lid);
+foreach ($listingslist as $userData) {
+    echo '<tr>';
+    foreach ($userData as $value) {
+        echo '<td>' . $value . '</td>';
+    }
+    echo '</tr>';
 }
-
 
 
 
