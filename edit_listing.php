@@ -199,7 +199,7 @@ if (Input::exists()) {
                                                 <label for="price" class="form-label">Price</label>
                                                 <input type="hidden" name="lid" id="lid" value="<?php echo $editlisting->id; ?>">
                                                 <input type="hidden" name="mlsid" id="mlsid" value="<?php echo $editlisting->mlsid; ?>">
-                                                <input type="hidden" name="current_image" id="current_image" value="<?php echo $editlisting->propert_image; ?>">
+                                                <input type="hidden" name="current_image" id="current_image" value="<?php echo $editlisting->property_image; ?>">
                                                 <input type="text" class="form-control text-danger" name="price" id="price" value="<?php echo $editlisting->price; ?>" placeholder="619,000" required>
                                             </div>
                                             <div class="mb-3">
