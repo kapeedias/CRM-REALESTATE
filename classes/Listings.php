@@ -1,6 +1,7 @@
 <?php
 
-class Listing{
+class Listing
+{
 
     private $_db, $_data, $_sessionName, $_cookieName, $_isLoggedIn;
     
@@ -8,7 +9,7 @@ class Listing{
     public function __construct($listing = null)
     {
         $this->_db = DB::getInstance();
-       
+
         if (!$listing) {
             if (Session::exists($this->_sessionName)) {
                 $user = Session::get($this->_sessionName);
@@ -22,8 +23,9 @@ class Listing{
             $this->find($listing);
         }
     }
-    public function update($fields = array(), $id = null){
-        if(!$this->_db->update('listings',$id, $fields)) {
+    public function update($fields = array(), $id = null)
+    {
+        if (!$this->_db->update('listings', $id, $fields)) {
             throw new Exception('There was a problem updating listing');
         }
     }
@@ -42,6 +44,46 @@ class Listing{
         return false;
     }
 
+    private function getColumnNames($table)
+    {
+        $columns = [];
+        $result = $this->_db->query("SHOW COLUMNS FROM $table");
+
+        foreach ($result->results() as $column) {
+            $columns[] = $column->Field;
+        }
+
+        return $columns;
+    }
+
+    public function listingsView($mlsid = null, $status = null)
+    {
+        $conditions = array();
+        if ($mlsid !== null) {
+            $conditions[] = array('mlsid', '=', $mlsid);
+        }
+        if ($status !== null) {
+            $conditions[] = array('status', '=', $status);
+        }
+
+        $data = $this->_db->get('listings', $conditions);
+
+        $listingsList = [];
+
+        if ($data->count()) {
+            $columns = $this->_db->getColumns('listings');
+            foreach ($data->results() as $listing) {
+                $listingData = [];
+                foreach ($columns as $column) {
+                    $listingData[$column] = $listing->$column;
+                }
+                $listingsList[] = $listingData;
+            }
+        }
+        return $listingsList;
+    }
+
+
     public function create($fields = array())
     {
         if ($this->_db->insert('listings', $fields)) {
@@ -53,7 +95,4 @@ class Listing{
     {
         return $this->_data;
     }
-
 }
-
-?>

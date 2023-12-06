@@ -9,7 +9,6 @@ if (!$user->isLoggedIn()) {
     die();
 }
 
-
 if (isset($_GET['id'])) {
     $lid = $_GET['id'];
 }
