@@ -178,7 +178,7 @@ if (Input::exists()) {
                    
                         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
                             <div>
-                                <h4 class="mb-3 mb-md-0">MLSID: <?php echo $listing['mlsid']; ?></h4>
+                                <h4 class="mb-3 mb-md-0">MLSID: <?php echo $editlisting->mlsid; ?></h4>
                             </div>
                         </div>
 
@@ -237,23 +237,7 @@ if (Input::exists()) {
                                                 <input type="text" class="form-control text-danger" id="property_url" name="property_url" value="<?php echo $editlisting->property_url; ?>">
                                             </div>
 
-                                            <div class="mb-3">
-                                                <label for="status" class="form-label">Status</label>
-                                                <select name="status" id="status" class="form-control text-danger">
-                                                    <option value="ACTIVE" <?php if ($editlisting->status == 'ACTIVE') {
-                                                                                echo "selected";
-                                                                            } ?>>Active</option>
-                                                    <option value="SOLD" <?php if ($editlisting->status == 'SOLD') {
-                                                                                echo "selected";
-                                                                            } ?>>Sold</option>
-                                                    <option value="DELETED" <?php if ($editlisting->status == 'DELETED') {
-                                                                                echo "selected";
-                                                                            } ?>>Deleted</option>
-                                                    <option value="INACTIVE" <?php if ($editlisting->status == 'INACTIVE') {
-                                                                                    echo "selected";
-                                                                                } ?>>Inactive</option>
-                                                </select>
-                                            </div>
+                                            
                                             <input type="submit" name="doUpdate" id="doUpdate" value="Update" class="btn btn-success" />
 
                                         </form>
@@ -262,7 +246,7 @@ if (Input::exists()) {
                             </div>
                             <div class="col-md-6">
                                 <strong>Featured Image</strong>
-                                <img src="<?php echo $listing['property_image']; ?>" style="max-width: 500px;" />
+                                <img src="<?php echo $editlisting->propert_image; ?>" style="max-width: 500px;" />
                             </div>
                         </div>
 
