@@ -67,12 +67,12 @@ class Listing
         }
     
         try {
-            $data = $this->_db->get('listings', $conditions);
+            $l = $this->_db->get('listings', $conditions);
     
             $listingsList = [];
     
-            if ($data && $data->count() > 0) {
-                foreach ($data->results() as $listing) {
+            if ($l && $l->count() > 0) {
+                foreach ($l->results() as $listing) {
                     $listingsList[] = (array)$listing; // Convert the object to an array
                 }
             }
