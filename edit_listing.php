@@ -182,11 +182,11 @@ if (isset($_POST["doUpdate"]) == 'Update') {
 
 $listingslist = $listing->listingsView($lid);
 foreach ($listingslist as $userData) {
-    echo '<tr>';
-    foreach ($userData as $value) {
-        echo '<td>' . $value . '</td>';
-    }
-    echo '</tr>';
+    
+    
+        echo  $userData . '</br>';
+   
+ 
 }
 
 
