@@ -16,7 +16,7 @@ $publicHtmlPath = dirname(__DIR__);
 $mls_img_upload = $publicHtmlPath . "/assets/img/mls";
 
 $editlisting = $listingz->getlisting($lid);
-echo $editlisting->mlsid;
+
 if (Input::exists()) {
     if (Token::check(Input::get('token'))) {
         $validate = new Validate();
@@ -175,7 +175,7 @@ if (Input::exists()) {
 
             <?php if (!empty($editlisting)) : ?>
                 <div class="page-content">
-                    <?php foreach ($editlisting as $listing) : ?>
+                   
                         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
                             <div>
                                 <h4 class="mb-3 mb-md-0">MLSID: <?php echo $listing['mlsid']; ?></h4>
@@ -192,23 +192,23 @@ if (Input::exists()) {
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h6 class="card-title">MLSID: <?php echo $listing['mlsid']; ?></h6>
+                                        <h6 class="card-title">MLSID: <?php echo $editlisting->mlsid; ?></h6>
 
                                         <form class="forms-listing" method="POST" action="" enctype="multipart/form-data">
                                             <div class="mb-3">
                                                 <label for="price" class="form-label">Price</label>
-                                                <input type="hidden" name="lid" id="lid" value="<?php echo $listing['id']; ?>">
-                                                <input type="hidden" name="mlsid" id="mlsid" value="<?php echo $listing['mlsid']; ?>">
-                                                <input type="hidden" name="current_image" id="current_image" value="<?php echo $listing['property_image']; ?>">
-                                                <input type="text" class="form-control text-danger" name="price" id="price" value="<?php echo $listing['price']; ?>" placeholder="619,000" required>
+                                                <input type="hidden" name="lid" id="lid" value="<?php echo $editlisting->id; ?>">
+                                                <input type="hidden" name="mlsid" id="mlsid" value="<?php echo $editlisting->mlsid; ?>">
+                                                <input type="hidden" name="current_image" id="current_image" value="<?php echo $editlisting->propert_image; ?>">
+                                                <input type="text" class="form-control text-danger" name="price" id="price" value="<?php echo $editlisting->price; ?>" placeholder="619,000" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="address1" class="form-label">Address 1</label>
-                                                <input type="text" class="form-control text-danger" id="address1" name="address1" value="<?php echo $listing['address1']; ?>" required>
+                                                <input type="text" class="form-control text-danger" id="address1" name="address1" value="<?php echo $editlisting->address1; ?>" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="description" class="form-label">Description</label>
-                                                <textarea class="form-control text-danger" id="description" name="description" row="3" required><?php echo $listing['property_description']; ?></textarea>
+                                                <textarea class="form-control text-danger" id="description" name="description" row="3" required><?php echo $editlisting->description; ?></textarea>
                                             </div>
                                             <div class=" mb-3">
                                                 <label for="property_image" class="form-label">Property Image</label>
@@ -216,40 +216,40 @@ if (Input::exists()) {
                                             </div>
                                             <div class="mb-3">
                                                 <label for="sqft" class="form-label">Area / Sq.Ft</label>
-                                                <input type="text" class="form-control text-danger" id="sqft" name="sqft" value="<?php echo $listing['sqft']; ?>">
+                                                <input type="text" class="form-control text-danger" id="sqft" name="sqft" value="<?php echo $editlisting->sqft; ?>">
                                             </div>
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="mb-3">
                                                         <label for="beds" class="form-label">Beds</label>
-                                                        <input type="text" class="form-control text-danger" id="beds" name="beds" value="<?php echo $listing['beds']; ?>">
+                                                        <input type="text" class="form-control text-danger" id="beds" name="beds" value="<?php echo $editlisting->beds; ?>">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="mb-3">
                                                         <label for="bath" class="form-label">Bath</label>
-                                                        <input type="text" class="form-control text-danger" id="bath" name="bath" value="<?php echo $listing['bath']; ?>">
+                                                        <input type="text" class="form-control text-danger" id="bath" name="bath" value="<?php echo $editlisting->bath; ?>">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="property_url" class="form-label"><a href="<?php echo $listing['property_url']; ?>" target="_blank">Property URL</a></label>
-                                                <input type="text" class="form-control text-danger" id="property_url" name="property_url" value="<?php echo $listing['property_url']; ?>">
+                                                <label for="property_url" class="form-label"><a href="<?php echo $editlisting->property_url; ?>" target="_blank">Property URL</a></label>
+                                                <input type="text" class="form-control text-danger" id="property_url" name="property_url" value="<?php echo $editlisting->property_url; ?>">
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="status" class="form-label">Status</label>
                                                 <select name="status" id="status" class="form-control text-danger">
-                                                    <option value="ACTIVE" <?php if ($listing['status'] == 'ACTIVE') {
+                                                    <option value="ACTIVE" <?php if ($editlisting->status == 'ACTIVE') {
                                                                                 echo "selected";
                                                                             } ?>>Active</option>
-                                                    <option value="SOLD" <?php if ($listing['status'] == 'SOLD') {
+                                                    <option value="SOLD" <?php if ($editlisting->status == 'SOLD') {
                                                                                 echo "selected";
                                                                             } ?>>Sold</option>
-                                                    <option value="DELETED" <?php if ($listing['status'] == 'DELETED') {
+                                                    <option value="DELETED" <?php if ($editlisting->status == 'DELETED') {
                                                                                 echo "selected";
                                                                             } ?>>Deleted</option>
-                                                    <option value="INACTIVE" <?php if ($listing['status'] == 'INACTIVE') {
+                                                    <option value="INACTIVE" <?php if ($editlisting->status == 'INACTIVE') {
                                                                                     echo "selected";
                                                                                 } ?>>Inactive</option>
                                                 </select>
@@ -269,11 +269,9 @@ if (Input::exists()) {
 
 
 
-                    <?php endforeach; ?>
+                    
                 </div>
-            <?php else : ?>
-                <p>No listings found.</p>
-            <?php endif; ?>
+           
             <!-- Footer Start -->
             <?php include('_include/inc_footer.php'); ?>
             <!-- Footer End -->
