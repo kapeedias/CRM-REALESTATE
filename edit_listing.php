@@ -59,7 +59,7 @@ if (Input::exists()) {
                     'sqft' => Input::get('sqft'),
                     'property_url' => Input::get('property_url'),
                     'property_image' => $file_url,
-                ),Input::get('lid'));
+                ),$lid);
                 Session::flash('edit_listing', 'You are registered successfully. You can login now!');
                 Redirect::to('edit_listing.php?id=$lid');
             } catch (Exception $e) {
