@@ -70,7 +70,7 @@ class Listing
 
         $listingsList = [];
 
-        if ($data->count()) {
+        if ($data) {
             $columns = $this->_db->getColumns('listings');
             foreach ($data->results() as $listing) {
                 $listingData = [];
