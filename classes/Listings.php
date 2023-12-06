@@ -67,7 +67,7 @@ class Listing
         }
     
         try {
-            $l = $this->_db->get('listings', $conditions);
+            $l = $this->_db->query('listings', $conditions);
     
             $listingsList = [];
     

@@ -16,7 +16,11 @@ $publicHtmlPath = dirname(__DIR__);
 $mls_img_upload = $publicHtmlPath . "/assets/img/mls";
 
 
-$listingsListz = $listingz->find($lid);
+$listingsListz = $listingz->listingsView($lid);
+foreach ($listingsListz as $userData) {
+    echo 'Price: ' . $userData['mlsid'] . '<br>';
+    // Add more lines for other elements as needed
+}
 
 
 if (Input::exists()) {
