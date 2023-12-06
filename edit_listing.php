@@ -180,13 +180,12 @@ if (isset($_POST["doUpdate"]) == 'Update') {
 */
 
 
-$listingslist = $listing->listingsView($lid);
-foreach ($listingslist as $userData) {
-    
-    
-        echo  $userData . '</br>';
-   
- 
+$listingsList = $listing->listingsView($lid);
+foreach ($listingsList as $userData) {
+    echo '<pre>';
+    print_r($userData);
+    echo '</pre>';
+    echo '<br>';
 }
 
 
