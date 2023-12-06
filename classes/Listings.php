@@ -72,16 +72,10 @@ class Listing
             $listingsList = [];
     
             if ($data && $data->count() > 0) {
-                $columns = $this->_db->getColumns('listings');
                 foreach ($data->results() as $listing) {
-                    $listingData = [];
-                    foreach ($columns as $column) {
-                        $listingData[$column] = $listing->$column;
-                    }
-                    $listingsList[] = $listingData;
+                    $listingsList[] = (array)$listing; // Convert the object to an array
                 }
             }
-    
             return $listingsList;
         } catch (Exception $e) {
             // Log or handle the exception as needed
