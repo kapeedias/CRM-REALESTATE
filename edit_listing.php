@@ -31,7 +31,7 @@ try {
     $stmt->execute();
 
     // Fetch all rows as an associative array
-    $listings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $listingsListz = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
@@ -181,12 +181,7 @@ if (isset($_POST["doUpdate"]) == 'Update') {
 
 
 $listingsListz = $listingz->listingsView($lid);
-foreach ($listingsListz as $userData) {
-    echo '<pre>';
-    print_r($userData);
-    echo '</pre>';
-    echo '<br>';
-}
+
 
 
 
@@ -348,9 +343,9 @@ if (Input::exists()) {
 
 
 
-            <?php if (!empty($listings)) : ?>
+            <?php if (!empty($listingsListz)) : ?>
                 <div class="page-content">
-                    <?php foreach ($listings as $listing) : ?>
+                    <?php foreach ($listingsListz as $listing) : ?>
                         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
                             <div>
                                 <h4 class="mb-3 mb-md-0">MLSID: <?php echo $listing['mlsid']; ?></h4>
