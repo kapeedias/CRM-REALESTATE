@@ -56,11 +56,11 @@ class Listing
         return $columns;
     }
 
-    public function listingsView($mlsid = null, $status = null)
+    public function listingsView($id = null, $status = null)
     {
         $conditions = array();
-        if ($mlsid !== null) {
-            $conditions[] = array('mlsid', '=', $mlsid);
+        if ($id !== null) {
+            $conditions[] = array('id', '=', $id);
         }
         if ($status !== null) {
             $conditions[] = array('status', '=', $status);

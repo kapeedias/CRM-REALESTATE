@@ -1,9 +1,9 @@
 <?php
 require_once 'core/init.php';
 require_once 'classes/Listings.php';
-
-
+$listing = new Listing();
 $user = new User();
+
 if (!$user->isLoggedIn()) {
     Redirect::to('login.php');
     die();
@@ -179,6 +179,17 @@ if (isset($_POST["doUpdate"]) == 'Update') {
 }
 */
 
+
+$listingslist = $listing->find($lid);
+if (!empty($listingslist)) {
+    echo "record found";
+}
+
+
+
+
+
+
 if (Input::exists()) {
     if (Token::check(Input::get('token'))) {
         $validate = new Validate();
@@ -214,15 +225,14 @@ if (Input::exists()) {
             }
     
             try {
-                $listing->create(array(
-                    'id' => Input::get('lid'),
+                $listing->update(array(
                     'price' => Hash::make(Input::get('price'), $salt),
                     'address1' => Input::get('address1'),
                     'description' => Input::get('description'),
                     'sqft' => Input::get('sqft'),
                     'property_url' => Input::get('property_url'),
                     'property_image' => $file_url,
-                ));
+                ),Input::get('lid'));
                 Session::flash('edit_listing', 'You are registered successfully. You can login now!');
                 Redirect::to('edit_listing.php?id=$lid');
             } catch (Exception $e) {
