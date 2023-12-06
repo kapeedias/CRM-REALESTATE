@@ -1,7 +1,7 @@
 <?php
 require_once 'core/init.php';
 require_once 'classes/Listings.php';
-$listing = new Listing();
+$listingz = new Listing();
 $user = new User();
 
 if (!$user->isLoggedIn()) {
@@ -180,8 +180,8 @@ if (isset($_POST["doUpdate"]) == 'Update') {
 */
 
 
-$listingsList = $listing->listingsView($lid);
-foreach ($listingsList as $userData) {
+$listingsListz = $listingz->listingsView($lid);
+foreach ($listingsListz as $userData) {
     echo '<pre>';
     print_r($userData);
     echo '</pre>';
