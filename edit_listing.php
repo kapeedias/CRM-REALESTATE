@@ -208,7 +208,7 @@ if (Input::exists()) {
                                             </div>
                                             <div class="mb-3">
                                                 <label for="description" class="form-label">Description</label>
-                                                <textarea class="form-control text-danger" id="description" name="description" row="3" required><?php echo $editlisting->description; ?></textarea>
+                                                <textarea class="form-control text-danger" id="description" name="description" row="3" required><?php echo $editlisting->property_description; ?></textarea>
                                             </div>
                                             <div class=" mb-3">
                                                 <label for="property_image" class="form-label">Property Image</label>
@@ -246,7 +246,7 @@ if (Input::exists()) {
                             </div>
                             <div class="col-md-6">
                                 <strong>Featured Image</strong>
-                                <img src="<?php echo $editlisting->propert_image; ?>" style="max-width: 500px;" />
+                                <img src="<?php echo $editlisting->property_image; ?>" style="max-width: 500px;" />
                             </div>
                         </div>
 
