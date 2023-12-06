@@ -173,7 +173,7 @@ if (Input::exists()) {
 
 
 
-            <?php if (!empty($editlisting)) : ?>
+            
                 <div class="page-content">
                    
                         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
