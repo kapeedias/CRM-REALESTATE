@@ -15,10 +15,7 @@ if (isset($_GET['id'])) {
 $publicHtmlPath = dirname(__DIR__);
 $mls_img_upload = $publicHtmlPath . "/assets/img/mls";
 
-
-$listingsListz = $listingz->listingsView($lid,"");
-
-
+$editlisting = $listingz->getlisting($lid);
 
 if (Input::exists()) {
     if (Token::check(Input::get('token'))) {
@@ -176,9 +173,9 @@ if (Input::exists()) {
 
 
 
-            <?php if (!empty($listingsListz)) : ?>
+            <?php if (!empty($editlisting)) : ?>
                 <div class="page-content">
-                    <?php foreach ($listingsListz as $listing) : ?>
+                    <?php foreach ($editlisting as $listing) : ?>
                         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
                             <div>
                                 <h4 class="mb-3 mb-md-0">MLSID: <?php echo $listing['mlsid']; ?></h4>

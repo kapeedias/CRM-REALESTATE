@@ -44,6 +44,20 @@ class Listing
         return false;
     }
 
+
+    public function getlisting($id = null){
+        if ($id) {
+            $field = (is_numeric($id)) ? 'id' : 'mlsid';
+            $listing_data = $this->_db->get('listings', array($field, '=', $id));
+
+            if ($listing_data->count()) {
+                return $listing_data->first(); // Assuming you are using a class that has a 'first' method to retrieve the first result
+            }
+        }
+
+    }
+
+
     private function getColumnNames($table)
     {
         $columns = [];
@@ -56,33 +70,6 @@ class Listing
         return $columns;
     }
 
-    public function listingsView($id = null, $status = null)
-    {
-        $conditions = array();
-        if ($id !== null) {
-            $conditions[] = array('id', '=', $id);
-        }
-        if ($status !== null) {
-            $conditions[] = array('status', '=', $status);
-        }
-    
-        try {
-            $l = $this->_db->query('listings', $conditions);
-    
-            $listingsList = [];
-    
-            if ($l && $l->count() > 0) {
-                foreach ($l->results() as $listing) {
-                    $listingsList[] = (array)$listing; // Convert the object to an array
-                }
-            }
-            return $listingsList;
-        } catch (Exception $e) {
-            // Log or handle the exception as needed
-            echo 'Error: ' . $e->getMessage();
-            return [];  // Return an empty array or handle it differently based on your requirements
-        }
-    }
     
 
     public function create($fields = array())
