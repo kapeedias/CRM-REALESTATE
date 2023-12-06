@@ -16,7 +16,7 @@ $publicHtmlPath = dirname(__DIR__);
 $mls_img_upload = $publicHtmlPath . "/assets/img/mls";
 
 $editlisting = $listingz->getlisting($lid);
-
+echo $editlisting->mlsid;
 if (Input::exists()) {
     if (Token::check(Input::get('token'))) {
         $validate = new Validate();
