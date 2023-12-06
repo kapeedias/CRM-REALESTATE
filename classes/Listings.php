@@ -66,22 +66,28 @@ class Listing
             $conditions[] = array('status', '=', $status);
         }
     
-        $data = $this->_db->get('listings', $conditions);
+        try {
+            $data = $this->_db->get('listings', $conditions);
     
-        $listingsList = [];
+            $listingsList = [];
     
-        if ($data->count() > 0) {
-            $columns = $this->_db->getColumns('listings');
-            foreach ($data->results() as $listing) {
-                $listingData = [];
-                foreach ($columns as $column) {
-                    $listingData[$column] = $listing->$column;
+            if ($data && $data->count() > 0) {
+                $columns = $this->_db->getColumns('listings');
+                foreach ($data->results() as $listing) {
+                    $listingData = [];
+                    foreach ($columns as $column) {
+                        $listingData[$column] = $listing->$column;
+                    }
+                    $listingsList[] = $listingData;
                 }
-                $listingsList[] = $listingData;
             }
-        }
     
-        return $listingsList;
+            return $listingsList;
+        } catch (Exception $e) {
+            // Log or handle the exception as needed
+            echo 'Error: ' . $e->getMessage();
+            return [];  // Return an empty array or handle it differently based on your requirements
+        }
     }
     
 
