@@ -65,12 +65,12 @@ class Listing
         if ($status !== null) {
             $conditions[] = array('status', '=', $status);
         }
-
+    
         $data = $this->_db->get('listings', $conditions);
-
+    
         $listingsList = [];
-
-        if ($data) {
+    
+        if ($data->count() > 0) {
             $columns = $this->_db->getColumns('listings');
             foreach ($data->results() as $listing) {
                 $listingData = [];
@@ -80,9 +80,10 @@ class Listing
                 $listingsList[] = $listingData;
             }
         }
+    
         return $listingsList;
     }
-
+    
 
     public function create($fields = array())
     {
