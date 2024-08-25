@@ -18,7 +18,7 @@ if (Input::exists()) {
             $login = $user->login(Input::get('username'), Input::get('password'));
 
             if ($login) {
-                //Redirect::to('myaccount.php');
+                Redirect::to('myaccount.php');
                 echo "Success";
             } else {
                 Session::flash('error', 'Login Failed. Please try again later');

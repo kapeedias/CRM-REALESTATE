@@ -36,7 +36,7 @@ if (Input::exists()) {
         if ($validation->passed()) {
 
             $user = new User();
-            $salt = Hash::salt(32);
+           echo  $salt = Hash::salt(32);
 
             try {
                 $user->create(array(
@@ -49,15 +49,16 @@ if (Input::exists()) {
                     'email' => Input::get('username'),
                 ));
 
-                Session::flash('home', 'You are registered successfully. You can login now!');
+                Session::flash('home', 'You are registered successfully. You can login now!'.$salt);
                 Redirect::to('login.php');
             } catch (Exception $e) {
-                Session::flash('Error', $e->getMessage().'<br />');
-                echo "Fail";
+                //Session::flash('error', $e->getMessage());
+                Session::flash('error', 'User with same username already exists. Please try with different username.');                
+
             }
         } else {
             foreach ($validation->errors() as $error) {
-                Session::flash('Error', $error.'<br />');
+                Session::flash('Error', $error . '<br />');
                 echo "Fail -1";
             }
         }
@@ -112,7 +113,13 @@ if (Input::exists()) {
 
                 <div class="row w-100 mx-0 auth-page">
                     <div class="col-md-8 col-xl-6 mx-auto">
-
+                    <?php
+                        if (Session::exists('success')) {
+                            echo '<div class="alert alert-success text-center" role="alert">' . Session::flash('success') . '</div>';
+                        }elseif(Session::exists('error')) {
+                            echo '<div class="alert alert-danger text-center" role="alert">' . Session::flash('error') . '</div>';
+                        }
+                        ?>
                         <div class="card">
                             <div class="row">
 
@@ -151,7 +158,8 @@ if (Input::exists()) {
                                                     class="form-control" autocomplete="off" />
                                             </div>
                                             <div>
-                                                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
+                                                <input type="hidden" name="token"
+                                                    value="<?php echo Token::generate(); ?>" />
                                                 <input type="submit" name="doRegister" id="doRegister" value="Register"
                                                     class="btn btn-success" />
                                             </div>

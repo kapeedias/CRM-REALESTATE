@@ -71,7 +71,9 @@ class User
     public function login($username = null, $password = null, $remember=false){
         $user = $this->find($username);
         if($user){
-            if($this->data()->password_hash === Hash::make($password, $this->data()->salt)){
+            if (Hash::make($password, $this->data()->salt) === $this->data()->password_hash) {
+                
+            //if($this->data()->password_hash === Hash::make($password, $this->data()->salt)){
                Session::put($this->_sessionName, $this->data()->id);
 
                 if($remember){
