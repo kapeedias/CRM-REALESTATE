@@ -4,11 +4,11 @@ require_once 'core/init.php';
 
 
 // Select //
-$user = DB::getInstance()->get('crm_users',array('username','=','sai@livewd.ca'));
+$user = DB::getInstance()->get('crm_users',array('username','=',''));
 //                  or
 // $user = DB::getInstance()->query("SELECT * FROM crm_users");
-$password = 'Chandrasekhar';
-$inputPassword = 'Chandrasekhar';
+$password = '';
+$inputPassword = '';
 $salt = Hash::salt(32);
 
 if(!$user->count()){

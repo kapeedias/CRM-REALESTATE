@@ -49,17 +49,16 @@ if (Input::exists()) {
                     'email' => Input::get('username'),
                 ));
 
-                Session::flash('home', 'You are registered successfully. You can login now!'.$salt);
+                Session::flash('home', 'You are registered successfully. You can login now!');
                 Redirect::to('login.php');
             } catch (Exception $e) {
                 //Session::flash('error', $e->getMessage());
-                Session::flash('error', 'User with same username already exists. Please try with different username.');                
+                Session::flash('error', 'User / Email already exists. Please try using different details.');                
 
             }
         } else {
             foreach ($validation->errors() as $error) {
-                Session::flash('Error', $error . '<br />');
-                echo "Fail -1";
+                Session::flash('error', 'Username and Password cannot be blank.');
             }
         }
     }
