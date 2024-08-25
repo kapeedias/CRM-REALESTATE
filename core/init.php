@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+//error_reporting(1);
 
 
 session_start();
@@ -12,10 +12,10 @@ $dbname = "real360";
 
 $GLOBALS['config'] = array(
     'mysql' => array(
-        'host' => 'localhost',
-        'username' => 'root',
-        'password' => '',
-        'db' => 'real360'
+        'host' => $servername,
+        'username' => $username,
+        'password' => $password,
+        'db' => $dbname
     ),
     'remember' => array(
         'cookie_name' => 'livewd_hash',

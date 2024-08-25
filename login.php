@@ -11,14 +11,15 @@ if (Input::exists()) {
                 'password' => array('required' => true)
             )
         );
-
+        
         if ($validation->passed()) {
             $user = new User();
             $remember = (Input::get('remember') === 'on') ? true : false;
             $login = $user->login(Input::get('username'), Input::get('password'));
 
             if ($login) {
-                Redirect::to('myaccount.php');
+                //Redirect::to('myaccount.php');
+                echo "Success";
             } else {
                 Session::flash('error', 'Login Failed. Please try again later');
                 echo "Login Failed";
@@ -87,32 +88,41 @@ if (Input::exists()) {
 
                                 <div class="col-12 p-4">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="noble-ui-logo d-block mb-2 text-center">REAL<span> ENGINE</span></a>
+                                        <a href="#" class="noble-ui-logo d-block mb-2 text-center">REAL<span>
+                                                ENGINE</span></a>
                                         <form action="" method="POST" class="form">
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">Email address</label>
-                                                <input type="text" name="username" id="username" value="<?php echo Input::get('username'); ?>" class="form-control" autocomplete="off" placeholder="Email" required="yes" />
+                                                <input type="text" name="username" id="username"
+                                                    value="<?php echo Input::get('username'); ?>" class="form-control"
+                                                    autocomplete="off" placeholder="Email" required="yes" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="password" class="form-label">Password</label>
-                                                <input type="password" name="password" id="password" class="form-control" autocomplete="off" required="yes" />
+                                                <input type="password" name="password" id="password"
+                                                    value="Chandrasekhar" class="form-control" autocomplete="off"
+                                                    required="yes" />
                                             </div>
                                             <div class="form-check mb-3">
-                                                <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                                                <input type="checkbox" class="form-check-input" id="remember"
+                                                    name="remember">
                                                 <label class="form-check-label" for="remember">
                                                     Remember me
                                                 </label>
                                             </div>
                                             <div class="form-check mb-3">
-                                                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
-                                                <input type="submit" name="doLogin" id="doLogin" value="Login" class="btn btn-success" />
+                                                <input type="hidden" name="token"
+                                                    value="<?php echo Token::generate(); ?>" />
+                                                <input type="submit" name="doLogin" id="doLogin" value="Login"
+                                                    class="btn btn-success" />
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <p class="footer-text"> &copy; Copyright Live Web Design. All Rights Reserved. Usage under licence.</p>
+                        <p class="footer-text"> &copy; Copyright Live Web Design. All Rights Reserved. Usage under
+                            licence.</p>
                     </div>
                 </div>
             </div>

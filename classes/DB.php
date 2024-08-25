@@ -1,8 +1,6 @@
 <?php
-
 class DB
 {
-
     private static $_instance = null;
     private $_pdo,
         $_query,
@@ -18,6 +16,7 @@ class DB
         } catch (PDOException $e) {
             die($e->getMessage());
         }
+        
     }
 
     public static function getInstance()
@@ -29,7 +28,7 @@ class DB
     } // end of function getInstance
 
 
-    public function query($sql, $params = array())
+  /*  public function query($sql, $params = array())
     {
         $this->_error = false;
         if ($this->_query = $this->_pdo->prepare($sql)) {
@@ -43,12 +42,42 @@ class DB
             if ($this->_query->execute()) {
                 $this->_results = $this->_query->fetchAll(PDO::FETCH_OBJ);
                 $this->_count = $this->_query->rowCount();
-            } else {
+            } else {                
                 $this->_error = true;
             }
         }
         return $this;
     } // end of function query
+
+    */
+   
+    public function query($sql, $params = array()) {
+        $this->_error = false; // Reset error state before each query
+        
+        try {
+            $this->_query = $this->_pdo->prepare($sql); // Prepare the SQL statement
+            $x = 1;
+
+            if (count($params)) {
+                foreach ($params as $param) {
+                    $this->_query->bindValue($x, $param);
+                    $x++;
+                }
+            }
+
+            if ($this->_query->execute()) {
+                $this->_results = $this->_query->fetchAll(PDO::FETCH_OBJ);
+                $this->_count = $this->_query->rowCount();
+            }
+
+        } catch (PDOException $e) {
+            $this->_error = true; // Set the error flag
+            // Optionally log or display the error message for debugging
+            // error_log($e->getMessage());
+        }
+
+        return $this;
+    }
 
     public function action($action, $table, $where = array())
     {
