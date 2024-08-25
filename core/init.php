@@ -6,16 +6,16 @@ session_start();
 
 // Replace these variables with your database credentials
 $servername = "localhost";
-$username = "cms_admin";
-$password = "cQ&cH_k)Xybr";
-$dbname = "cms_livewd";
+$username = "root";
+$password = "";
+$dbname = "real360";
 
 $GLOBALS['config'] = array(
     'mysql' => array(
         'host' => 'localhost',
-        'username' => 'cms_admin',
-        'password' => 'cQ&cH_k)Xybr',
-        'db' => 'cms_livewd'
+        'username' => 'root',
+        'password' => '',
+        'db' => 'real360'
     ),
     'remember' => array(
         'cookie_name' => 'livewd_hash',
