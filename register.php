@@ -78,7 +78,7 @@ if (Input::exists()) {
     <meta name="author" content="Live Web Design">
 
 
-    <title>RealEngine - A CRM built for Realtors</title>
+    <title>Real360 - A CRM built for Realtors</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -119,7 +119,7 @@ if (Input::exists()) {
                                 <div class="col-12 p-3">
                                     <div class="auth-form-wrapper px-4 py-5">
                                         <a href="#" class="noble-ui-logo d-block mb-2 text-center">Real<span>
-                                                Engine</span></a>
+                                                360</span></a>
                                         <h5 class="text-muted fw-normal mb-4 text-center">Create a free account.</h5>
                                         <form class="forms-sample" action="" method="POST">
                                             <div class="mb-3">
@@ -151,8 +151,7 @@ if (Input::exists()) {
                                                     class="form-control" autocomplete="off" />
                                             </div>
                                             <div>
-                                                <input type="hidden" name="token"
-                                                    value="<?php echo Token::generate(); ?>" />
+                                                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
                                                 <input type="submit" name="doRegister" id="doRegister" value="Register"
                                                     class="btn btn-success" />
                                             </div>

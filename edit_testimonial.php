@@ -99,7 +99,7 @@ if (isset($_POST["doUpdate"]) == 'Update') {
     <meta name="author" content="Live Web Design">
 
 
-    <title>REALENGINE - A CRM built for REALtors</title>
+    <title>REAL360 - A CRM built for REALtors</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -134,7 +134,7 @@ if (isset($_POST["doUpdate"]) == 'Update') {
         <nav class="sidebar">
             <div class="sidebar-header">
                 <a href="myaccount.php" class="sidebar-brand">
-                    REAL<span> ENGINE</span>
+                    REAL<span>360</span>
                 </a>
                 <div class="sidebar-toggler not-active">
                     <span></span>

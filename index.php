@@ -43,7 +43,7 @@ if (Input::exists()) {
     <meta name="description" content="A Powerful CRM for REALtors">
     <meta name="author" content="Live Web Design">
 
-    <title>REALENGINE - A CRM built for REALtors</title>
+    <title>REAL360 - A CRM built for REALtors</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,7 +87,7 @@ if (Input::exists()) {
 
                                 <div class="col-12 p-4">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="noble-ui-logo d-block mb-2 text-center">REAL<span> ENGINE</span></a>
+                                        <a href="#" class="noble-ui-logo d-block mb-2 text-center">REAL<span>360</span></a>
                                         <form action="" method="POST" class="form">
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">Email address</label>
