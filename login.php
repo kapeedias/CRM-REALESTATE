@@ -22,7 +22,7 @@ if (Input::exists()) {
                 echo "Success";
             } else {
                 Session::flash('error', 'Login Failed. Please try again later');
-                echo "Login Failed";
+                //echo "Login Failed";
             }
         } else {
             foreach ($validation->errors() as $error) {
@@ -81,6 +81,8 @@ if (Input::exists()) {
                         <?php
                         if (Session::exists('home')) {
                             echo '<div class="alert alert-success text-center" role="alert">' . Session::flash('home') . '</div>';
+                        }elseif (Session::exists('error')) {
+                            echo '<div class="alert alert-danger text-center" role="alert">' . Session::flash('error') . '</div>';
                         }
                         ?>
                         <div class="card">
@@ -88,7 +90,8 @@ if (Input::exists()) {
 
                                 <div class="col-12 p-4">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="noble-ui-logo d-block mb-2 text-center">REAL<span>360</span></a>
+                                        <a href="#"
+                                            class="noble-ui-logo d-block mb-2 text-center">REAL<span>360</span></a>
                                         <form action="" method="POST" class="form">
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">Email address</label>
@@ -99,8 +102,7 @@ if (Input::exists()) {
                                             <div class="mb-3">
                                                 <label for="password" class="form-label">Password</label>
                                                 <input type="password" name="password" id="password"
-                                                    value="Chandrasekhar" class="form-control" autocomplete="off"
-                                                    required="yes" />
+                                                    class="form-control" autocomplete="off" required="yes" />
                                             </div>
                                             <div class="form-check mb-3">
                                                 <input type="checkbox" class="form-check-input" id="remember"
