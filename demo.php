@@ -2,7 +2,7 @@
 
 require_once 'core/init.php';
 
-
+/*
 // Select //
 $user = DB::getInstance()->get('crm_users',array('username','=',''));
 //                  or
@@ -17,7 +17,7 @@ if(!$user->count()){
     foreach($user->results() as $user){
         //echo $user->username, '<br />';
         //echo $user->password_hash, '<br /><br />';
-        echo $user->salt. '<br /><br />';
+      //  echo $user->salt. '<br /><br />';
     }
 }
 /*
@@ -25,7 +25,7 @@ echo 'Entered Password: '.$pwd. '<br />';
 echo "Salt: $salt\n". '<br />';
 echo 'Hashed Password: '. Hash::make($pwd, $salt). '<br />';
 
-*/
+
 
 $hashedPassword = $user->password_hash;
 
